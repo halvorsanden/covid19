@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.join(__dirname, './www'),
-    filename: '[name].js',
+    filename: 'bundle.js',
     chunkFilename: 'chunk[id].js'
   },
 

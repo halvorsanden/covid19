@@ -1,5 +1,3 @@
 node_modules/
-www/index.bundle.js
-www/*.index.bundle.js
-www/bundle.css
+bundle.*
 .DS_Store
