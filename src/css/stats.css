@@ -1,0 +1,72 @@
+.stat {
+  margin-bottom: 3rem;
+  flex: 0 1 16rem;
+  margin-right: 1rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.6em;
+  color: hsl(0, 0%, 30%);
+}
+
+dt {
+  font-weight: 600;
+}
+
+.cases__total,
+.cases__new,
+.cnd__critical,
+.cnd__dead,
+.cnd__died,
+.cnd__deadly,
+.recovered {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+}
+
+.active,
+.cases,
+.cnd {
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.cases {
+  border-left: 3px solid rgb(238, 173, 87);
+  padding-left: 0.4em;
+}
+
+.cnd {
+  border-left: 3px solid rgb(238, 87, 87);
+  padding-left: 0.4em;
+}
+
+.recovered {
+  border-left: 3px solid rgb(87, 208, 238);
+  padding-left: 0.4em;
+}
+
+.active {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.active dd {
+  order: 1;
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 0.2em;
+}
+
+.active dt {
+  order: 2;
+  text-transform: lowercase;
+}
+
+.cases dt,
+.cnd dt,
+.recovered dt {
+  margin-right: 1ch;
+}

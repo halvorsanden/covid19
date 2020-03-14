@@ -15,21 +15,19 @@ img,
 strong,
 sub,
 sup,
+dl,
+dd,
+dt,
 ol,
 ul,
 li,
-fieldset,
-form,
-label,
 article,
 aside,
 figure,
 figcaption,
 footer,
 header,
-nav,
-section,
-svg {
+section {
   border: 0;
   font-size: 100%;
   font: inherit;
@@ -49,11 +47,6 @@ nav,
 section,
 input,
 label {
-  display: block;
-}
-img {
-  width: 100%;
-  height: auto;
   display: block;
 }
 *,

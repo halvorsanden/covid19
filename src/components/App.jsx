@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import 'regenerator-runtime/runtime'
 import 'whatwg-fetch'
 import 'promise-polyfill/src/polyfill'
+import Stats from './Stats.jsx'
 
 const endpointCountries =
   'https://cors-anywhere.herokuapp.com/https://corona.lmao.ninja/countries'
@@ -29,14 +30,9 @@ const App = () => {
     fetchCountries()
   }, [])
 
-  function round(value, precision) {
-    const multiplier = Math.pow(10, precision || 0)
-    return Math.round(value * multiplier) / multiplier
-  }
-
   return (
     <>
-      <header className="header">
+      <header>
         <h1>COVID-19</h1>
       </header>
       <section>
@@ -44,35 +40,13 @@ const App = () => {
           <>
             {countries.map((country, i) => (
               <React.Fragment key={i}>
-                {country.country == 'Norway' ? (
-                  <>
-                    <h2>{country.country}</h2>
-                    <dl>
-                      <dt>Active cases</dt>
-                      <dd>
-                        {country.cases - country.deaths - country.recovered}
-                      </dd>
-                      <dt>Total cases</dt>
-                      <dd>{country.cases}</dd>
-                      <dt>New cases today</dt>
-                      <dd>{country.todayCases}</dd>
-                      <dt>Increase</dt>
-                      <dd>
-                        {round((country.todayCases / country.cases) * 100, 2)} %
-                      </dd>
-                      <dt>Critical</dt>
-                      <dd>{country.critical}</dd>
-                      <dt>Deaths</dt>
-                      <dd>{country.deaths}</dd>
-                      <dt>New deaths today</dt>
-                      <dd>{country.todayDeaths}</dd>
-                      <dt>Deadliness</dt>
-                      <dd>{round(country.deaths / country.cases, 10)} %</dd>
-                      <dt>Recovered</dt>
-                      <dd>{country.recovered}</dd>
-                    </dl>
-                  </>
-                ) : null}
+                {country.country === 'Norway' ? <Stats {...country} /> : null}
+                {country.country === 'Sweden' ? <Stats {...country} /> : null}
+                {country.country === 'Denmark' ? <Stats {...country} /> : null}
+                {country.country === 'Iceland' ? <Stats {...country} /> : null}
+                {country.country === 'Finland' ? <Stats {...country} /> : null}
+                {country.country === 'China' ? <Stats {...country} /> : null}
+                {country.country === 'Italy' ? <Stats {...country} /> : null}
               </React.Fragment>
             ))}
           </>
@@ -81,12 +55,6 @@ const App = () => {
         )}
       </section>
       <footer>
-        <p>
-          API:{' '}
-          <a href="https://github.com/NovelCOVID/API">
-            github.com/NovelCOVID/API
-          </a>
-        </p>
         <p>
           Data:{' '}
           <a href="https://www.worldometers.info/coronavirus/">
