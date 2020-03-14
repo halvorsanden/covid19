@@ -5,7 +5,7 @@
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: calc(1.1rem + 0.5vmin);
   margin-bottom: 0.6em;
   color: hsl(0, 0%, 30%);
 }
@@ -29,7 +29,7 @@ dt {
 .active,
 .cases,
 .cnd {
-  padding-bottom: 0.4rem;
+  padding-bottom: 0.1rem;
   margin-bottom: 0.4rem;
 }
 
@@ -55,7 +55,7 @@ dt {
 
 .active dd {
   order: 1;
-  font-size: 3rem;
+  font-size: calc(1.8rem + 1vmin);
   font-weight: 900;
   margin-bottom: 0.2em;
 }

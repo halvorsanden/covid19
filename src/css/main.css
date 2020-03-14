@@ -20,7 +20,7 @@ body {
 
 header {
   background-color: hsl(0, 0%, 80%);
-  padding: 0.5rem;
+  padding: 0.5rem 2.5vw;
 }
 
 h1 {
@@ -28,8 +28,12 @@ h1 {
   font-weight: 900;
 }
 
+h1 span {
+  font-weight: 400;
+}
+
 section {
-  margin: 2rem 1rem 2rem 2rem;
+  margin: 2rem 0 2rem 6vw;
   display: flex;
   flex-flow: row wrap;
 }
@@ -40,19 +44,26 @@ footer {
   justify-content: space-between;
   align-content: flex-start;
   align-items: center;
-  padding: 2em 6rem;
-}
-
-footer p {
+  padding: 0 6vw 2rem;
   font-size: 0.75rem;
-  margin-bottom: 0;
 }
 
 footer a,
 footer a:visited {
-  color: hsl(209, 84%, 78%);
+  color: hsl(209, 100%, 50%);
 }
 
 footer a:hover,
 footer a:focus {
+  color: hsl(0, 0%, 15%);
+}
+
+.devlogo:link,
+.devlogo:visited {
+  color: hsl(0, 0%, 40%);
+}
+
+.devlogo:hover,
+.devlogo:active {
+  color: hsl(0, 0%, 15%);
 }
