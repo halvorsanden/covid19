@@ -34,17 +34,17 @@ dt {
 }
 
 .cases {
-  border-left: 3px solid rgb(238, 173, 87);
+  border-left: 3px solid hsl(34, 93%, 61%);
   padding-left: 0.4em;
 }
 
 .cnd {
-  border-left: 3px solid rgb(238, 87, 87);
+  border-left: 3px solid hsl(3, 93%, 60%);
   padding-left: 0.4em;
 }
 
 .recovered {
-  border-left: 3px solid rgb(87, 208, 238);
+  border-left: 3px solid hsl(192, 82%, 64%);
   padding-left: 0.4em;
 }
 

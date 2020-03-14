@@ -26,37 +26,53 @@ const Stats = ({
           <dt>Total</dt>
           <dd>{cases}</dd>
         </div>
-        <div className="cases__new">
-          <dt>New today</dt>
-          <dd>{todayCases}</dd>
-        </div>
-        <div className="cases__total">
-          <dt>Total increase</dt>
-          <dd>{round((todayCases / cases) * 100, 2)} %</dd>
-        </div>
+        {todayCases > 0 && (
+          <>
+            <div className="cases__new">
+              <dt>New today</dt>
+              <dd>{todayCases}</dd>
+            </div>
+            <div className="cases__total">
+              <dt>Total increase</dt>
+              <dd>{round((todayCases / cases) * 100, 2)} %</dd>
+            </div>
+          </>
+        )}
       </div>
-      <div className="cnd">
-        <div className="cnd__critical">
-          <dt>Critical</dt>
-          <dd>{critical}</dd>
+      {critical + deaths > 0 && (
+        <div className="cnd">
+          {critical > 0 && (
+            <div className="cnd__critical">
+              <dt>Critical</dt>
+              <dd>{critical}</dd>
+            </div>
+          )}
+          {deaths > 0 && (
+            <div className="cnd__dead">
+              <dt>Dead</dt>
+              <dd>{deaths}</dd>
+            </div>
+          )}
+          {todayDeaths > 0 && (
+            <div className="cnd__died">
+              <dt>Died today</dt>
+              <dd>{todayDeaths}</dd>
+            </div>
+          )}
+          {deaths > 0 && (
+            <div className="cnd__deadly">
+              <dt>Deadliness</dt>
+              <dd>{round(deaths / cases, 6)} %</dd>
+            </div>
+          )}
         </div>
-        <div className="cnd__dead">
-          <dt>Dead</dt>
-          <dd>{deaths}</dd>
+      )}
+      {recovered > 0 && (
+        <div className="recovered">
+          <dt>Recovered</dt>
+          <dd>{recovered}</dd>
         </div>
-        <div className="cnd__died">
-          <dt>Died today</dt>
-          <dd>{todayDeaths}</dd>
-        </div>
-        <div className="cnd__deadly">
-          <dt>Deadliness</dt>
-          <dd>{round(deaths / cases, 6)} %</dd>
-        </div>
-      </div>
-      <div className="recovered">
-        <dt>Recovered</dt>
-        <dd>{recovered}</dd>
-      </div>
+      )}
     </dl>
   </div>
 )
