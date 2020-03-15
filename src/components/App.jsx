@@ -13,6 +13,7 @@ const App = () => {
   const [countries, setCountries] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(false)
+  const [showAll, setShowAll] = useState(false)
 
   useEffect(() => {
     setIsLoading(true)
@@ -38,26 +39,38 @@ const App = () => {
         <h1>
           COVID-19 <span>status</span>
         </h1>
+        {!showAll ? (
+          <button onClick={() => setShowAll(true)}>Show all</button>
+        ) : (
+          <button onClick={() => setShowAll(false)}>Show selected</button>
+        )}
       </header>
       <main>
-        {!isLoading && !error ? (
-          countries.map((country, i) => (
-            <React.Fragment key={i}>
-              {country.country === 'Norway' ? <Stats {...country} /> : null}
-              {country.country === 'Sweden' ? <Stats {...country} /> : null}
-              {country.country === 'Denmark' ? <Stats {...country} /> : null}
-              {country.country === 'Iceland' ? <Stats {...country} /> : null}
-              {country.country === 'Finland' ? <Stats {...country} /> : null}
-              {country.country === 'China' ? <Stats {...country} /> : null}
-              {country.country === 'Italy' ? <Stats {...country} /> : null}
-              {country.country === 'India' ? <Stats {...country} /> : null}
-              {country.country === 'Macao' ? <Stats {...country} /> : null}
-            </React.Fragment>
-          ))
-        ) : (
-          <Loading />
-        )}
+        {!showAll &&
+          (!isLoading && !error ? (
+            countries.map((country, i) => (
+              <React.Fragment key={i}>
+                {country.country === 'Norway' ? <Stats {...country} /> : null}
+                {country.country === 'Sweden' ? <Stats {...country} /> : null}
+                {country.country === 'Denmark' ? <Stats {...country} /> : null}
+                {country.country === 'Iceland' ? <Stats {...country} /> : null}
+                {country.country === 'Finland' ? <Stats {...country} /> : null}
+                {country.country === 'China' ? <Stats {...country} /> : null}
+                {country.country === 'Italy' ? <Stats {...country} /> : null}
+                {country.country === 'India' ? <Stats {...country} /> : null}
+                {country.country === 'Macao' ? <Stats {...country} /> : null}
+              </React.Fragment>
+            ))
+          ) : (
+            <Loading />
+          ))}
         <World />
+        {showAll &&
+          (!isLoading && !error ? (
+            countries.map((country, i) => <Stats key={i} {...country} />)
+          ) : (
+            <Loading />
+          ))}
       </main>
       <footer>
         <p>
