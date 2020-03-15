@@ -29,12 +29,10 @@ const Stats = ({
         {todayCases > 0 && (
           <>
             <div className="cases__new">
-              <dt>New today</dt>
-              <dd>{todayCases}</dd>
-            </div>
-            <div className="cases__total">
-              <dt>Total increase</dt>
-              <dd>{round((todayCases / cases) * 100, 2)} %</dd>
+              <dt>Today</dt>
+              <dd>
+                +{todayCases} / {round((todayCases / cases) * 100, 2)} %
+              </dd>
             </div>
           </>
         )}
@@ -47,18 +45,19 @@ const Stats = ({
               <dd>{critical}</dd>
             </div>
           )}
-          {deaths > 0 && (
-            <div className="cnd__dead">
-              <dt>Dead</dt>
-              <dd>{deaths}</dd>
-            </div>
-          )}
           {todayDeaths > 0 && (
             <div className="cnd__died">
               <dt>Died today</dt>
               <dd>{todayDeaths}</dd>
             </div>
           )}
+          {deaths > 0 && (
+            <div className="cnd__dead">
+              <dt>Dead</dt>
+              <dd>{deaths}</dd>
+            </div>
+          )}
+
           {deaths > 0 && (
             <div className="cnd__deadly">
               <dt>Deadliness</dt>
@@ -67,12 +66,18 @@ const Stats = ({
           )}
         </div>
       )}
-      {recovered > 0 && (
-        <div className="recovered">
-          <dt>Recovered</dt>
-          <dd>{recovered}</dd>
-        </div>
-      )}
+      {recovered > 0 &&
+        (recovered === cases ? (
+          <div className="recovered--all">
+            <dt>Recovered</dt>
+            <dd>{recovered}</dd>
+          </div>
+        ) : (
+          <div className="recovered">
+            <dt>Recovered</dt>
+            <dd>{recovered}</dd>
+          </div>
+        ))}
     </dl>
   </div>
 )

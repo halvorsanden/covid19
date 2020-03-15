@@ -20,7 +20,8 @@ dt {
 .cnd__dead,
 .cnd__died,
 .cnd__deadly,
-.recovered {
+.recovered,
+.recovered--all {
   display: flex;
   flex-flow: row wrap;
   align-items: baseline;
@@ -48,6 +49,11 @@ dt {
   padding-left: 0.4em;
 }
 
+.recovered--all {
+  border-left: 3px solid hsl(101, 61%, 61%);
+  padding-left: 0.4em;
+}
+
 .active {
   display: flex;
   flex-flow: column nowrap;
@@ -67,6 +73,7 @@ dt {
 
 .cases dt,
 .cnd dt,
-.recovered dt {
+.recovered dt,
+.recovered--all dt {
   margin-right: 1ch;
 }

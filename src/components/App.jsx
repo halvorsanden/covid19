@@ -3,6 +3,7 @@ import 'regenerator-runtime/runtime'
 import 'whatwg-fetch'
 import 'promise-polyfill/src/polyfill'
 import Stats from './Stats.jsx'
+import Loading from './Loading.jsx'
 
 const endpointCountries =
   'https://cors-anywhere.herokuapp.com/https://corona.lmao.ninja/countries'
@@ -49,11 +50,12 @@ const App = () => {
                 {country.country === 'Finland' ? <Stats {...country} /> : null}
                 {country.country === 'China' ? <Stats {...country} /> : null}
                 {country.country === 'Italy' ? <Stats {...country} /> : null}
+                {country.country === 'Macao' ? <Stats {...country} /> : null}
               </React.Fragment>
             ))}
           </>
         ) : (
-          <p>loading</p>
+          <Loading />
         )}
       </section>
       <footer>

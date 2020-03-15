@@ -38,6 +38,11 @@ section {
   flex-flow: row wrap;
 }
 
+.loading {
+  stroke: hsl(3, 93%, 60%);
+  width: 6rem;
+}
+
 footer {
   display: flex;
   flex-flow: row wrap;
