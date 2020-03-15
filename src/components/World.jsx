@@ -38,36 +38,38 @@ const World = () => {
     fetchWorld()
   }, [])
 
+  const { cases, deaths, recovered } = world
+
   return !isLoading && !error ? (
     <section>
       <h2>Worldwide</h2>
       <dl>
         <div className="active">
           <dt>Active cases</dt>
-          <dd>{formatNum(world.cases - world.deaths - world.recovered)}</dd>
+          <dd>{formatNum(cases - deaths - recovered)}</dd>
         </div>
-        {world.cases > 0 && (
+        {cases > 0 && (
           <div className="cases cases__total">
             <dt>Total</dt>
-            <dd>{formatNum(world.cases)}</dd>
+            <dd>{formatNum(cases)}</dd>
           </div>
         )}
-        {world.deaths > 0 && (
+        {deaths > 0 && (
           <div className="cnd">
             <div className="cnd__dead">
               <dt>Dead</dt>
-              <dd>{formatNum(world.deaths)}</dd>
+              <dd>{formatNum(deaths)}</dd>
             </div>
             <div className="cnd__deadly">
               <dt>Deadliness</dt>
-              <dd>{round(world.deaths / world.cases, 6)} %</dd>
+              <dd>{round((deaths / cases) * 100, 4)} %</dd>
             </div>
           </div>
         )}
         {world.recovered > 0 && (
           <div className="recovered">
             <dt>Recovered</dt>
-            <dd>{formatNum(world.recovered)}</dd>
+            <dd>{formatNum(recovered)}</dd>
           </div>
         )}
       </dl>

@@ -26,18 +26,18 @@ const Stats = ({
         <dd>{formatNum(cases - deaths - recovered)}</dd>
       </div>
       <div className="cases">
-        <div className="cases__total">
-          <dt>Total</dt>
-          <dd>{cases}</dd>
-        </div>
         {todayCases > 0 && (
           <div className="cases__new">
             <dt>Today</dt>
             <dd>
-              {formatNum(todayCases)} / {round((todayCases / cases) * 100, 3)} %
+              {formatNum(todayCases)} ({round((todayCases / cases) * 100, 3)} %)
             </dd>
           </div>
         )}
+        <div className="cases__total">
+          <dt>Total</dt>
+          <dd>{formatNum(cases)}</dd>
+        </div>
       </div>
       {critical + deaths > 0 && (
         <div className="cnd">
@@ -63,7 +63,7 @@ const Stats = ({
           {deaths > 0 && (
             <div className="cnd__deadly">
               <dt>Deadliness</dt>
-              <dd>{round(deaths / cases, 6)} %</dd>
+              <dd>{round((deaths / cases) * 100, 4)} %</dd>
             </div>
           )}
         </div>
