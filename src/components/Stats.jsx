@@ -5,6 +5,10 @@ function round(value, precision) {
   return Math.round(value * multiplier) / multiplier
 }
 
+function formatNum(num) {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
+}
+
 const Stats = ({
   country,
   cases,
@@ -14,12 +18,12 @@ const Stats = ({
   critical,
   todayDeaths
 }) => (
-  <div className="stat">
+  <section>
     <h2>{country}</h2>
     <dl>
       <div className="active">
         <dt>Active cases</dt>
-        <dd>{cases - deaths - recovered}</dd>
+        <dd>{formatNum(cases - deaths - recovered)}</dd>
       </div>
       <div className="cases">
         <div className="cases__total">
@@ -27,14 +31,13 @@ const Stats = ({
           <dd>{cases}</dd>
         </div>
         {todayCases > 0 && (
-          <>
-            <div className="cases__new">
-              <dt>Today</dt>
-              <dd>
-                +{todayCases} / {round((todayCases / cases) * 100, 2)} %
-              </dd>
-            </div>
-          </>
+          <div className="cases__new">
+            <dt>Today</dt>
+            <dd>
+              +{formatNum(todayCases)} / {round((todayCases / cases) * 100, 3)}{' '}
+              %
+            </dd>
+          </div>
         )}
       </div>
       {critical + deaths > 0 && (
@@ -42,19 +45,19 @@ const Stats = ({
           {critical > 0 && (
             <div className="cnd__critical">
               <dt>Critical</dt>
-              <dd>{critical}</dd>
+              <dd>{formatNum(critical)}</dd>
             </div>
           )}
           {todayDeaths > 0 && (
             <div className="cnd__died">
               <dt>Died today</dt>
-              <dd>{todayDeaths}</dd>
+              <dd>{formatNum(todayDeaths)}</dd>
             </div>
           )}
           {deaths > 0 && (
             <div className="cnd__dead">
               <dt>Dead</dt>
-              <dd>{deaths}</dd>
+              <dd>{formatNum(deaths)}</dd>
             </div>
           )}
 
@@ -70,16 +73,16 @@ const Stats = ({
         (recovered === cases ? (
           <div className="recovered--all">
             <dt>Recovered</dt>
-            <dd>{recovered}</dd>
+            <dd>{formatNum(recovered)}</dd>
           </div>
         ) : (
           <div className="recovered">
             <dt>Recovered</dt>
-            <dd>{recovered}</dd>
+            <dd>{formatNum(recovered)}</dd>
           </div>
         ))}
     </dl>
-  </div>
+  </section>
 )
 
 export default Stats

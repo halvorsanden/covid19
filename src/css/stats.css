@@ -1,12 +1,12 @@
-.stat {
+section {
   margin-bottom: 3rem;
-  flex: 0 1 16rem;
+  flex: 0 1 14rem;
   margin-right: 1rem;
 }
 
 h2 {
   font-size: calc(1.1rem + 0.5vmin);
-  margin-bottom: 0.6em;
+  margin-bottom: 0.1em;
   color: hsl(0, 0%, 30%);
 }
 
@@ -50,7 +50,7 @@ dt {
 }
 
 .recovered--all {
-  border-left: 3px solid hsl(101, 61%, 61%);
+  border-left: 3px solid hsl(88, 52%, 55%);
   padding-left: 0.4em;
 }
 
@@ -63,12 +63,14 @@ dt {
   order: 1;
   font-size: calc(1.8rem + 1vmin);
   font-weight: 900;
-  margin-bottom: 0.2em;
+  line-height: 1;
 }
 
 .active dt {
   order: 2;
   text-transform: lowercase;
+  line-height: 1;
+  margin-bottom: 0.3em;
 }
 
 .cases dt,

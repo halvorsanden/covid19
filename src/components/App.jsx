@@ -3,6 +3,7 @@ import 'regenerator-runtime/runtime'
 import 'whatwg-fetch'
 import 'promise-polyfill/src/polyfill'
 import Stats from './Stats.jsx'
+import World from './World.jsx'
 import Loading from './Loading.jsx'
 
 const endpointCountries =
@@ -38,26 +39,26 @@ const App = () => {
           COVID-19 <span>status</span>
         </h1>
       </header>
-      <section>
+      <main>
         {!isLoading && !error ? (
-          <>
-            {countries.map((country, i) => (
-              <React.Fragment key={i}>
-                {country.country === 'Norway' ? <Stats {...country} /> : null}
-                {country.country === 'Sweden' ? <Stats {...country} /> : null}
-                {country.country === 'Denmark' ? <Stats {...country} /> : null}
-                {country.country === 'Iceland' ? <Stats {...country} /> : null}
-                {country.country === 'Finland' ? <Stats {...country} /> : null}
-                {country.country === 'China' ? <Stats {...country} /> : null}
-                {country.country === 'Italy' ? <Stats {...country} /> : null}
-                {country.country === 'Macao' ? <Stats {...country} /> : null}
-              </React.Fragment>
-            ))}
-          </>
+          countries.map((country, i) => (
+            <React.Fragment key={i}>
+              {country.country === 'Norway' ? <Stats {...country} /> : null}
+              {country.country === 'Sweden' ? <Stats {...country} /> : null}
+              {country.country === 'Denmark' ? <Stats {...country} /> : null}
+              {country.country === 'Iceland' ? <Stats {...country} /> : null}
+              {country.country === 'Finland' ? <Stats {...country} /> : null}
+              {country.country === 'China' ? <Stats {...country} /> : null}
+              {country.country === 'Italy' ? <Stats {...country} /> : null}
+              {country.country === 'India' ? <Stats {...country} /> : null}
+              {country.country === 'Macao' ? <Stats {...country} /> : null}
+            </React.Fragment>
+          ))
         ) : (
           <Loading />
         )}
-      </section>
+        <World />
+      </main>
       <footer>
         <p>
           Data:{' '}
@@ -65,11 +66,7 @@ const App = () => {
             worldometers.info/coronavirus/
           </a>
         </p>
-        <a
-          className="devlogo noline"
-          aria-label="D+D: 8 Yard"
-          href="http://8yd.no"
-        >
+        <a className="devlogo" aria-label="D+D: 8 Yard" href="http://8yd.no">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 601 282"
