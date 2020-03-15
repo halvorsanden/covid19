@@ -34,8 +34,7 @@ const Stats = ({
           <div className="cases__new">
             <dt>Today</dt>
             <dd>
-              +{formatNum(todayCases)} / {round((todayCases / cases) * 100, 3)}{' '}
-              %
+              {formatNum(todayCases)} / {round((todayCases / cases) * 100, 3)} %
             </dd>
           </div>
         )}
