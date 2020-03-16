@@ -22,7 +22,7 @@ const Stats = ({
     <h2>{country}</h2>
     <dl>
       <div className="active">
-        <dt>Active cases</dt>
+        {(cases - deaths - recovered) != 1 ? (<dt>Active cases</dt>) : <dt>Active case</dt>}
         <dd>{formatNum(cases - deaths - recovered)}</dd>
       </div>
       <div className="cases">

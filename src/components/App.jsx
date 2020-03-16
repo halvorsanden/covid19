@@ -79,7 +79,7 @@ const App = () => {
             worldometers.info/coronavirus/
           </a>
         </p>
-        <a className="devlogo" aria-label="D+D: 8 Yard" href="http://8yd.no">
+        <a className="devlogo" aria-label="D+D: 8 Yard" href="https://8yd.no">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 601 282"
