@@ -42,8 +42,8 @@ const App = () => {
         {!showAll ? (
           <button onClick={() => setShowAll(true)}>Show all</button>
         ) : (
-          <button onClick={() => setShowAll(false)}>Show selected</button>
-        )}
+            <button onClick={() => setShowAll(false)}>Show selected</button>
+          )}
       </header>
       <main>
         {!showAll &&
@@ -57,20 +57,19 @@ const App = () => {
                 {country.country === 'Finland' ? <Stats {...country} /> : null}
                 {country.country === 'China' ? <Stats {...country} /> : null}
                 {country.country === 'Italy' ? <Stats {...country} /> : null}
-                {country.country === 'India' ? <Stats {...country} /> : null}
-                {country.country === 'Macao' ? <Stats {...country} /> : null}
+                {country.country === 'S. Korea' ? <Stats {...country} /> : null}
               </React.Fragment>
             ))
           ) : (
-            <Loading />
-          ))}
+              <Loading />
+            ))}
         <World />
         {showAll &&
           (!isLoading && !error ? (
             countries.map((country, i) => <Stats key={i} {...country} />)
           ) : (
-            <Loading />
-          ))}
+              <Loading />
+            ))}
       </main>
       <footer>
         <p>
