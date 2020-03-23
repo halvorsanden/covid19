@@ -66,6 +66,10 @@ dt {
   line-height: 1;
 }
 
+.active.percent dd {
+   font-size: calc(1rem + 1vmin);
+}
+
 .active dt {
   order: 2;
   text-transform: lowercase;

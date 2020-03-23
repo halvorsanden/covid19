@@ -4,7 +4,6 @@ import 'whatwg-fetch'
 import 'promise-polyfill/src/polyfill'
 import Stats from './Stats.jsx'
 import World from './World.jsx'
-import WorldPercentage from './WorldPercentage.jsx'
 import Loading from './Loading.jsx'
 
 const endpointCountries =
@@ -65,7 +64,6 @@ const App = () => {
               <Loading />
             ))}
         <World />
-        <WorldPercentage />
         {showAll &&
           (!isLoading && !error ? (
             countries.map((country, i) => <Stats key={i} {...country} />)
