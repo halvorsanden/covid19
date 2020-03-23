@@ -46,7 +46,7 @@ const World = () => {
       <dl>
         <div className="active">
           <dt>Active cases</dt>
-          <dd>{formatNum(cases - deaths - recovered)}</dd>
+          <dd>{cases && formatNum(cases - deaths - recovered)}</dd>
         </div>
         {cases > 0 && (
           <div className="cases cases__total">
