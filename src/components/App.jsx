@@ -13,14 +13,14 @@ const App = () => {
           COVID-19 <span>status</span>
         </h1>
         {!showAll && !showCountry ? (
-          <button onClick={() => setShowAll(true)}>Selected countries</button>
-        ) : (
-            <div className="btndeact">Selected countries</div>
-          )}
-        {showAll && !showCountry ? (
-          <button onClick={() => setShowAll(false)}>All countries</button>
+          <button onClick={() => setShowAll(true)}>All countries</button>
         ) : (
             <div className="btndeact">All countries</div>
+          )}
+        {showAll && !showCountry ? (
+          <button onClick={() => setShowAll(false)}>Selected countries</button>
+        ) : (
+            <div className="btndeact">Selected countries</div>
           )}
         {/* {!showCountry ? (
           <button onClick={() => setShowCountry(true)}>Norway details (beta)</button>
