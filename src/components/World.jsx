@@ -15,8 +15,8 @@ function round(value, precision) {
   return Math.round(value * multiplier) / multiplier
 }
 
-function formatNum(num) {
-  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
+function formatNum(nja) {
+  return nja.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
 }
 
 const World = () => {

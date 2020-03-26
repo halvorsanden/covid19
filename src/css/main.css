@@ -38,10 +38,23 @@ h1 span {
   font-weight: 400;
 }
 
-button {
-  background: hsl(0, 0%, 95%);
+button, .btndeact {
   border: 1px solid hsl(0, 0%, 75%);
   padding: 0.3em 0.6em;
+  font-size: .8rem;
+  line-height: 1.4;
+}
+
+.btndeact {
+  background: hsl(0, 0%, 85%);
+}
+
+button {
+  font-family: system-ui, /* macOS 10.11-10.12 */ -apple-system,
+  /* Windows 6+ */ Segoe UI, /* Android 4+ */ Roboto,
+  /* Ubuntu 10.10+ */ Ubuntu, /* Gnome 3+ */ Cantarell,
+  /* KDE Plasma 5+ */ Noto Sans, /* fallback */ sans-serif;
+  background: hsl(0, 0%, 95%);
 }
 
 button:hover {

@@ -39,11 +39,11 @@ const Stats = ({
           )}
           <div className="cases__total">
             <dt>Total</dt>
-            <dd>{formatNum(cases)}</dd>
+            <dd>{cases && formatNum(cases)}</dd>
           </div>
           <div className="cases__total">
             <dt>Total/M</dt>
-            <dd>{formatNum(casesPerOneMillion)}</dd>
+            <dd>{casesPerOneMillion && formatNum(casesPerOneMillion)}</dd>
           </div>
         </div>
         {critical + deaths > 0 && (
