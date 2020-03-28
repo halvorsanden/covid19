@@ -19,34 +19,38 @@ body {
 }
 
 header {
-  background-color: hsl(0, 0%, 80%);
+  background-color: hsl(0, 0%, 90%);
   padding: 0.6rem 2.5vw 0.5rem;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  border-bottom: 1px solid hsl(0, 0%, 75%);
 }
 
 h1 {
-  font-size: 1.5rem;
-  font-weight: 900;
+  font-size: 1.17rem;
+  font-weight: 800;
   margin-right: 1em;
   margin-bottom: 0.2em;
   margin-top: 0.1em;
+  color: hsl(0, 56%, 60%);
 }
 
 h1 span {
-  font-weight: 400;
+  font-weight: 500;
 }
 
 button, .btndeact {
-  border: 1px solid hsl(0, 0%, 75%);
+  border: 1px solid hsl(0, 0%, 70%);
   padding: 0.3em 0.6em;
   font-size: .8rem;
   line-height: 1.4;
+  margin-right: -1px;
 }
 
 .btndeact {
-  background: hsl(0, 0%, 85%);
+  background: hsl(0, 0%, 82%);
+  border-color: hsl(0, 0%, 60%);
 }
 
 button {
@@ -54,11 +58,11 @@ button {
   /* Windows 6+ */ Segoe UI, /* Android 4+ */ Roboto,
   /* Ubuntu 10.10+ */ Ubuntu, /* Gnome 3+ */ Cantarell,
   /* KDE Plasma 5+ */ Noto Sans, /* fallback */ sans-serif;
-  background: hsl(0, 0%, 95%);
+  background: hsl(0, 0%, 98%);
 }
 
 button:hover {
-  background: hsl(0, 0%, 90%);
+  background: hsl(0, 0%, 92%);
   border-color: hsl(0, 0%, 65%);
 }
 
@@ -69,7 +73,7 @@ main {
 }
 
 .loading {
-  stroke: hsl(3, 93%, 60%);
+  stroke: hsl(0, 56%, 60%);
   width: 6rem;
 }
 
