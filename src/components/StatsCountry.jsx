@@ -25,7 +25,6 @@ function logHeight(caseInt) {
   }
 }
 
-
 const StatsCountry = ({
   current: { country, cases, todayCases, deaths, todayDeaths, recovered, active, critical, casesPerOneMillion, deathsPerOneMillion }, historical, historical: { timeline }
 }) => {

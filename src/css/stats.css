@@ -90,14 +90,16 @@ h3 {
 
 .country {
   flex: 1;
+  margin-right: 1rem;
 }
 
 .country-chart {
-  margin-bottom: 4vh;
+  overflow-x: auto;
   display: grid;
   grid-template-areas: 
   "values"
   "keys";
+  margin-bottom: 4vh;
 }
 
 .linewrapper {
@@ -105,6 +107,7 @@ h3 {
   display: flex;
   flex-flow: column nowrap;
   justify-content: stretch;
+  width:99%;
 }
 
 .chart-line {
@@ -119,17 +122,20 @@ border-top: 1px solid hsl(0, 0%, 80%);
   flex-flow: row nowrap;
   align-items: flex-end;
   z-index: 35;
+  width:99%;
 }
 
 .case-bar {
  background-color: hsla(0, 0%, 50%, 0.2);
- border: 1px solid hsl(0, 0%, 60%);
+ border: 1px solid hsl(0, 0%, 75%);
  margin-right: -1px;
  flex: 1 1 auto;
  font-size: 0.7rem;
  writing-mode: vertical-rl;
 text-orientation: mixed;
 line-height: 1;
+padding-right: .5em;
+padding-left: .5em;
 }
 
 .keys {
@@ -138,6 +144,8 @@ line-height: 1;
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-start;
+  margin-bottom: 1rem;
+  width:99%;
 }
 
 .case-key {
@@ -147,4 +155,7 @@ line-height: 1;
   writing-mode: vertical-rl;
  text-orientation: mixed;
  line-height: 1;
+ padding-right: .5em;
+padding-left: .5em;
+border: 1px solid transparent;
 }
