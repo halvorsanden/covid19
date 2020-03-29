@@ -22,7 +22,7 @@ const WorldPercentage = props => {
   const pRecovered = round(recovered / everyone * 100, 10)
 
   return (
-    <section>
+    <section className="statcard">
       <h2>Percentage worldwide</h2>
       <dl>
         <div className="active percent">

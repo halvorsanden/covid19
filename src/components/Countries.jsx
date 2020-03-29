@@ -11,7 +11,7 @@ const endpointCountries =
 
 const Countries = ({ showAll }) => {
   const [countries, setCountries] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(false)
   const [showState, setShowState] = useState(showAll)
 
@@ -36,8 +36,6 @@ const Countries = ({ showAll }) => {
   useEffect(() => {
     setShowState(showAll);
   }, [showAll]);
-
-  console.log(showState, showAll);
 
   return (
     <>

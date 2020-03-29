@@ -21,10 +21,10 @@ function formatNum(nja) {
 
 const World = () => {
   const [world, setWorld] = useState([])
-  const [isLoadingW, setIsLoadingW] = useState(false)
+  const [isLoadingW, setIsLoadingW] = useState(true)
   const [errorW, setErrorW] = useState(false)
   const [people, setPeople] = useState({})
-  const [isLoadingP, setIsLoadingP] = useState(false)
+  const [isLoadingP, setIsLoadingP] = useState(true)
   const [errorP, setErrorP] = useState(false)
 
   const fetchWorld = async () => {
@@ -66,7 +66,7 @@ const World = () => {
 
   return !isLoadingW && !errorW && !isLoadingP && !errorP ? (
     <>
-      <section>
+      <section className="statcard">
         <h2>Worldwide</h2>
         <dl>
           <div className="active">

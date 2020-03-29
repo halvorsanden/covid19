@@ -21,7 +21,7 @@ const Stats = ({
   casesPerOneMillion,
   deathsPerOneMillion
 }) => (
-    <section>
+    <section className="statcard">
       <h2>{country}</h2>
       <dl>
         <div className="active">
