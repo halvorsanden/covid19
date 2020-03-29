@@ -40,6 +40,12 @@ h1 span {
   font-weight: 500;
 }
 
+nav {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
 button, .btndeact {
   border: 1px solid hsl(0, 0%, 70%);
   padding: 0.3em 0.6em;

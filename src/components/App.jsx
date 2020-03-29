@@ -3,8 +3,17 @@ import Countries from './Countries.jsx'
 import Country from './Country.jsx'
 
 const App = () => {
-  const [showAll, setShowAll] = useState(false)
-  const [showCountry, setShowCountry] = useState(false)
+  const [show, setShow] = useState({ selected: true, all: false, country: false })
+
+  function activateSelected() {
+    setShow({ selected: true, all: false, country: false })
+  }
+  function activateAll() {
+    setShow({ selected: false, all: true, country: false })
+  }
+  function activateCountry() {
+    setShow({ selected: false, all: false, country: true })
+  }
 
   return (
     <>
@@ -12,27 +21,29 @@ const App = () => {
         <h1>
           COVID-19 <span>status</span>
         </h1>
-        {!showAll && !showCountry ? (
-          <button onClick={() => setShowAll(true)}>All countries</button>
-        ) : (
-            <div className="btndeact">All countries</div>
-          )}
-        {showAll && !showCountry ? (
-          <button onClick={() => setShowAll(false)}>Selected countries</button>
-        ) : (
-            <div className="btndeact">Selected countries</div>
-          )}
-        {/* {!showCountry ? (
-          <button onClick={() => setShowCountry(true)}>Norway details (beta)</button>
-        ) : (
-            <div className="btndeact">Norway details (beta)</div>
-          )} */}
+        <nav>
+          {!show.selected ? (
+            <button onClick={activateSelected}>Selected countries</button>
+          ) : (
+              <div className="btndeact">Selected countries</div>
+            )}
+          {!show.all ? (
+            <button onClick={activateAll}>All countries</button>
+          ) : (
+              <div className="btndeact">All countries</div>
+            )}
+          {!show.country ? (
+            <button onClick={activateCountry}>Norway (WIP)</button>
+          ) : (
+              <div className="btndeact">Norway (WIP)</div>
+            )}
+        </nav>
       </header>
       <main>
-        {!showCountry ? (
-          <Countries showAll={showAll} />
+        {!show.country ? (
+          <Countries showAll={show.all} />
         ) : (
-            <Country showCountry={showCountry} />
+            <Country showCountry={show.country} />
           )}
       </main>
       <footer>
