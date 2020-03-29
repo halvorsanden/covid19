@@ -46,11 +46,11 @@ const Countries = ({ showAll }) => {
               {country.country === 'Norway' ? <Stats {...country} /> : null}
               {country.country === 'Sweden' ? <Stats {...country} /> : null}
               {country.country === 'Denmark' ? <Stats {...country} /> : null}
-              {country.country === 'Iceland' ? <Stats {...country} /> : null}
-              {country.country === 'Finland' ? <Stats {...country} /> : null}
               {country.country === 'China' ? <Stats {...country} /> : null}
               {country.country === 'Italy' ? <Stats {...country} /> : null}
-              {country.country === 'S. Korea' ? <Stats {...country} /> : null}
+              {country.country === 'USA' ? <Stats {...country} /> : null}
+              {country.country === 'Spain' ? <Stats {...country} /> : null}
+              {country.country === 'France' ? <Stats {...country} /> : null}
             </React.Fragment>
           ))
         ) : (
