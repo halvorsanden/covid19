@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import Stats from './Stats.jsx'
 
 function round(value, precision) {
   const multiplier = Math.pow(10, precision || 0)
@@ -51,22 +52,7 @@ function logHeight(caseInt) {
   }
 }
 
-const StatsCountry = ({
-  current: {
-    country,
-    cases,
-    todayCases,
-    deaths,
-    todayDeaths,
-    recovered,
-    active,
-    critical,
-    casesPerOneMillion,
-    deathsPerOneMillion
-  },
-  historical,
-  historical: { timeline }
-}) => {
+const StatsCountry = ({ current, historical: { timeline } }) => {
   const tlCasesValue = []
   Object.keys(timeline.cases).forEach(
     (key) => timeline.cases[key] > 0 && tlCasesValue.push(timeline.cases[key])
@@ -78,90 +64,94 @@ const StatsCountry = ({
   )
 
   return (
-    <section className="country">
-      <h2>{country}</h2>
-      <h3>Linear</h3>
-      <div className="country-chart">
-        <div className="linewrapper">
-          <div className="chart-line-lin">10 000</div>
-          <div className="chart-line-lin">9 000</div>
-          <div className="chart-line-lin">8 000</div>
-          <div className="chart-line-lin">7 000</div>
-          <div className="chart-line-lin">6 000</div>
-          <div className="chart-line-lin">5 000</div>
-          <div className="chart-line-lin">4 000</div>
-          <div className="chart-line-lin">3 000</div>
-          <div className="chart-line-lin">2 000</div>
-          <div className="chart-line-lin">1 000</div>
+    <>
+      <Stats {...current} />
+      <section className="country">
+        <h3>30 days linear</h3>
+        <div className="country-chart">
+          <div className="linewrapper">
+            <div className="chart-line-lin">10 000</div>
+            <div className="chart-line-lin">9 000</div>
+            <div className="chart-line-lin">8 000</div>
+            <div className="chart-line-lin">7 000</div>
+            <div className="chart-line-lin">6 000</div>
+            <div className="chart-line-lin">5 000</div>
+            <div className="chart-line-lin">4 000</div>
+            <div className="chart-line-lin">3 000</div>
+            <div className="chart-line-lin">2 000</div>
+            <div className="chart-line-lin">1 000</div>
+          </div>
+          <div className="barwrapper">
+            {tlCasesValue.map((caseValue, i) => (
+              <div
+                key={i}
+                className="case-bar"
+                style={{ height: `calc(0.01% * ${caseValue})` }}
+              >
+                {formatNum(caseValue)}
+              </div>
+            ))}
+          </div>
+          <div className="keys">
+            {tlCasesKeys.map((date, i) => (
+              <time key={i} dateTime={dateTime(date)} className="case-key">
+                {dateFormat(date)}
+              </time>
+            ))}
+          </div>
         </div>
-        <div className="barwrapper">
-          {tlCasesValue.map((caseValue, i) => (
-            <div
-              key={i}
-              className="case-bar"
-              style={{ height: `calc(0.01% * ${caseValue})` }}
-            >
-              {caseValue}
-            </div>
-          ))}
+      </section>
+      <section className="country">
+        <h3>30 days logarithmic</h3>
+        <div className="country-chart">
+          <div className="linewrapper">
+            <div className="chart-line-log">10 000 000</div>
+            <div className="chart-line-log">1 000 000</div>
+            <div className="chart-line-log">100 000</div>
+            <div className="chart-line-log">10 000</div>
+            <div className="chart-line-log">1 000</div>
+            <div className="chart-line-log">100</div>
+            <div className="chart-line-log">10</div>
+            <div className="chart-line-log">1</div>
+          </div>
+          <div className="barwrapper">
+            {tlCasesValue.map((caseValue, i) => (
+              <Fragment key={i}>
+                {caseValue === 1 && (
+                  <div
+                    key={i}
+                    className="case-bar"
+                    style={{
+                      height: '12.5%'
+                    }}
+                  >
+                    {caseValue}
+                  </div>
+                )}
+                {caseValue > 1 && (
+                  <div
+                    key={i}
+                    className="case-bar"
+                    style={{
+                      height: logHeight(caseValue)
+                    }}
+                  >
+                    {formatNum(caseValue)}
+                  </div>
+                )}
+              </Fragment>
+            ))}
+          </div>
+          <div className="keys">
+            {tlCasesKeys.map((date, i) => (
+              <time key={i} dateTime={dateTime(date)} className="case-key">
+                {dateFormat(date)}
+              </time>
+            ))}
+          </div>
         </div>
-        <div className="keys">
-          {tlCasesKeys.map((date, i) => (
-            <time key={i} dateTime={dateTime(date)} className="case-key">
-              {dateFormat(date)}
-            </time>
-          ))}
-        </div>
-      </div>
-      <h3>Logarithmic</h3>
-      <div className="country-chart">
-        <div className="linewrapper">
-          <div className="chart-line-log">10 000 000</div>
-          <div className="chart-line-log">1 000 000</div>
-          <div className="chart-line-log">100 000</div>
-          <div className="chart-line-log">10 000</div>
-          <div className="chart-line-log">1 000</div>
-          <div className="chart-line-log">100</div>
-          <div className="chart-line-log">10</div>
-          <div className="chart-line-log">1</div>
-        </div>
-        <div className="barwrapper">
-          {tlCasesValue.map((caseValue, i) => (
-            <React.Fragment key={i}>
-              {caseValue === 1 && (
-                <div
-                  key={i}
-                  className="case-bar"
-                  style={{
-                    height: '20%'
-                  }}
-                >
-                  {caseValue}
-                </div>
-              )}
-              {caseValue > 1 && (
-                <div
-                  key={i}
-                  className="case-bar"
-                  style={{
-                    height: logHeight(caseValue)
-                  }}
-                >
-                  {caseValue}
-                </div>
-              )}
-            </React.Fragment>
-          ))}
-        </div>
-        <div className="keys">
-          {tlCasesKeys.map((date, i) => (
-            <time key={i} dateTime={dateTime(date)} className="case-key">
-              {dateFormat(date)}
-            </time>
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
 
