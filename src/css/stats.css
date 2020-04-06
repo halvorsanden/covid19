@@ -101,6 +101,7 @@ dt {
     'values'
     'keys';
   margin-bottom: 4vh;
+  margin-top: 1rem;
 }
 
 .linewrapper {
@@ -113,12 +114,12 @@ dt {
 
 .chart-line-log {
   flex: 0 0 12.5%;
-  border-top: 1px solid hsl(0, 0%, 80%);
+  border-top: 1px solid hsla(3, 93%, 60%, 0.4);
 }
 
 .chart-line-lin {
   flex: 0 0 10%;
-  border-top: 1px solid hsl(0, 0%, 80%);
+  border-top: 1px solid hsla(3, 93%, 60%, 0.4);
 }
 
 .barwrapper {
