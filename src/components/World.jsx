@@ -1,5 +1,5 @@
-import React from 'react'
-import WorldPercentage from './WorldPercentage.jsx'
+import React, { Suspense, lazy } from 'react'
+const WorldPercentage = lazy(() => import('./WorldPercentage.jsx'))
 
 function round(value, precision) {
   const multiplier = Math.pow(10, precision || 0)
@@ -10,7 +10,7 @@ function formatNum(num) {
   return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
 }
 
-const World = ({ world, people }) => {
+const World = ({ world, people, loadingP, errorP }) => {
   const { cases, deaths, recovered } = world
 
   return (
@@ -48,11 +48,13 @@ const World = ({ world, people }) => {
           )}
         </dl>
       </section>
-      {cases && people.total_population && (
-        <WorldPercentage
-          caseData={world}
-          population={people.total_population}
-        />
+      {!loadingP && !errorP && (
+        <Suspense fallback={null}>
+          <WorldPercentage
+            caseData={world}
+            population={people.total_population}
+          />
+        </Suspense>
       )}
     </>
   )

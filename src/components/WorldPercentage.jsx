@@ -18,35 +18,38 @@ const WorldPercentage = (props) => {
   const pRecovered = round((recovered / everyone) * 100, 10)
 
   return (
-    <section className="statcard">
-      <h2>Percentage worldwide</h2>
-      <dl>
-        <div className="active percent">
-          <dt>Active</dt>
-          <dd>{pCases}&nbsp;%</dd>
-        </div>
-        {cases > 0 && (
-          <div className="cases cases__total">
-            <dt>Total</dt>
-            <dd>{pTotal}&nbsp;%</dd>
+    cases &&
+    population && (
+      <section className="statcard">
+        <h2>Percentage worldwide</h2>
+        <dl>
+          <div className="active percent">
+            <dt>Active</dt>
+            <dd>{pCases}&nbsp;%</dd>
           </div>
-        )}
-        {deaths > 0 && (
-          <div className="cnd">
-            <div className="cnd__dead">
-              <dt>Dead</dt>
-              <dd>{pDeaths}&nbsp;%</dd>
+          {cases > 0 && (
+            <div className="cases cases__total">
+              <dt>Total</dt>
+              <dd>{pTotal}&nbsp;%</dd>
             </div>
-          </div>
-        )}
-        {recovered > 0 && (
-          <div className="rnt rnt__recovered">
-            <dt>Recovered</dt>
-            <dd>{pRecovered}&nbsp;%</dd>
-          </div>
-        )}
-      </dl>
-    </section>
+          )}
+          {deaths > 0 && (
+            <div className="cnd">
+              <div className="cnd__dead">
+                <dt>Dead</dt>
+                <dd>{pDeaths}&nbsp;%</dd>
+              </div>
+            </div>
+          )}
+          {recovered > 0 && (
+            <div className="rnt rnt__recovered">
+              <dt>Recovered</dt>
+              <dd>{pRecovered}&nbsp;%</dd>
+            </div>
+          )}
+        </dl>
+      </section>
+    )
   )
 }
 

@@ -148,18 +148,15 @@ const App = () => {
           : null}
       </header>
       <main>
-        {!isLoadingW &&
-        !errorW &&
-        !isLoadingP &&
-        !errorP &&
-        !isLoadingC &&
-        !errorC ? (
+        {!isLoadingW && !errorW && !isLoadingC && !errorC ? (
           !show.country ? (
             <Countries
               countries={countries}
               showAll={show.all}
               world={world}
               people={people}
+              loadingP={isLoadingP}
+              errorP={errorP}
             />
           ) : (
             <Suspense fallback={<Loading />}>
