@@ -1,6 +1,6 @@
 {
   "name": "covid19",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Covid-19 numbers",
   "repository": {
     "type": "git",
@@ -37,12 +37,10 @@
   },
   "dependencies": {
     "novelcovid": "^1.1.4",
-    "promise-polyfill": "^8.1.3",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.1.2",
-    "whatwg-fetch": "^3.0.0"
+    "react-router-dom": "^5.1.2"
   },
   "browserslist": [
     "cover 93%"

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense, lazy } from 'react'
+import 'regenerator-runtime/runtime'
 import { NovelCovid } from 'novelcovid'
 import Countries from './Countries.jsx'
-import Country from './Country.jsx'
 import Loading from './Loading.jsx'
 import monthsAbbr from '../helpers/months.js'
+const Country = lazy(() => import('./Country.jsx'))
 
 const APIEndpoint = new NovelCovid()
 const endpointPeople =
@@ -161,7 +162,9 @@ const App = () => {
               people={people}
             />
           ) : (
-            <Country showCountry={show.country} />
+            <Suspense fallback={<Loading />}>
+              <Country showCountry={show.country} />
+            </Suspense>
           )
         ) : (
           <Loading />

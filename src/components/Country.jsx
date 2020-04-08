@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import 'regenerator-runtime/runtime'
-import 'promise-polyfill/src/polyfill'
 import { NovelCovid } from 'novelcovid'
 import Loading from './Loading.jsx'
 import StatsCountry from './StatsCountry.jsx'
