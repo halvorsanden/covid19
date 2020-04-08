@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import 'regenerator-runtime/runtime'
 import 'whatwg-fetch'
 import 'promise-polyfill/src/polyfill'
+import { NovelCovid } from 'novelcovid'
 import WorldPercentage from './WorldPercentage.jsx'
 
-const endpointWorld =
-  'https://cors-anywhere.herokuapp.com/https://corona.lmao.ninja/all'
+const APIEndpoint = new NovelCovid()
 
 const endpointPeople =
   'https://cors-anywhere.herokuapp.com/https://d6wn6bmjj722w.population.io/1.0/population/World/today-and-tomorrow/'
@@ -29,31 +29,31 @@ const World = () => {
 
   const fetchWorld = async () => {
     setIsLoadingW(true)
-    await fetch(endpointWorld)
-      .then(response => {
-        if (response.ok) {
-          return response.json()
+    await APIEndpoint.all()
+      .then((response) => {
+        if (response) {
+          return response
         } else {
           throw new Error('Error')
         }
       })
-      .then(response => setWorld(response))
-      .catch(error => setErrorW({ error }))
+      .then((response) => setWorld(response))
+      .catch((error) => setErrorW({ error }))
     setIsLoadingW(false)
   }
 
   const fetchPeople = async () => {
     setIsLoadingP(true)
     await fetch(endpointPeople)
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
           return response.json()
         } else {
           throw new Error('Error')
         }
       })
-      .then(response => setPeople(response))
-      .catch(error => setErrorP({ error }))
+      .then((response) => setPeople(response))
+      .catch((error) => setErrorP({ error }))
     setIsLoadingP(false)
   }
 
@@ -99,13 +99,12 @@ const World = () => {
           )}
         </dl>
       </section>
-      {
-        (cases && people.total_population) &&
+      {cases && people.total_population && (
         <WorldPercentage
           caseData={world}
           population={people.total_population}
         />
-      }
+      )}
     </>
   ) : null
 }

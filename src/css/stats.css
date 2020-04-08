@@ -95,7 +95,6 @@ dt {
 }
 
 .country-chart {
-  overflow-x: auto;
   display: grid;
   grid-template-areas:
     'values'

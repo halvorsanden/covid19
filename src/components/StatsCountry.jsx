@@ -76,7 +76,7 @@ const StatsCountry = ({ current, historical: { timeline } }) => {
     <>
       <Stats {...current} />
       <section className="country">
-        <h3>30 days</h3>
+        <h3>Total 30 days</h3>
         {!showLog ? (
           <>
             <div className="nav">

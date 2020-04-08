@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import 'regenerator-runtime/runtime'
-import 'whatwg-fetch'
 import 'promise-polyfill/src/polyfill'
+import { NovelCovid } from 'novelcovid'
 import Stats from './Stats.jsx'
 import World from './World.jsx'
 import Loading from './Loading.jsx'
 
-const endpointCountries =
-  'https://cors-anywhere.herokuapp.com/https://corona.lmao.ninja/countries'
+const APIEndpoint = new NovelCovid()
 
 const Countries = ({ showAll }) => {
   const [countries, setCountries] = useState([])
@@ -18,24 +17,24 @@ const Countries = ({ showAll }) => {
   useEffect(() => {
     setIsLoading(true)
     const fetchCountries = async () => {
-      await fetch(endpointCountries)
-        .then(response => {
-          if (response.ok) {
-            return response.json()
+      await APIEndpoint.countries()
+        .then((response) => {
+          if (response) {
+            return response
           } else {
             throw new Error('Error')
           }
         })
-        .then(response => setCountries(response))
-        .catch(error => setError({ error }))
+        .then((response) => setCountries(response))
+        .catch((error) => setError({ error }))
       setIsLoading(false)
     }
     fetchCountries()
   }, [])
 
   useEffect(() => {
-    setShowState(showAll);
-  }, [showAll]);
+    setShowState(showAll)
+  }, [showAll])
 
   return (
     <>
@@ -54,15 +53,15 @@ const Countries = ({ showAll }) => {
             </React.Fragment>
           ))
         ) : (
-            <Loading />
-          ))}
+          <Loading />
+        ))}
       <World />
       {showState &&
         (!isLoading && !error ? (
           countries.map((country, i) => <Stats key={i} {...country} />)
         ) : (
-            <Loading />
-          ))}
+          <Loading />
+        ))}
     </>
   )
 }

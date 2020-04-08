@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import 'regenerator-runtime/runtime'
-import 'whatwg-fetch'
 import 'promise-polyfill/src/polyfill'
+import { NovelCovid } from 'novelcovid'
 import Loading from './Loading.jsx'
 import StatsCountry from './StatsCountry.jsx'
 
 // Experimental, can probably be changed to input at some time to feature other countries
 
-const endpointCurrent =
-  'https://cors-anywhere.herokuapp.com/https://corona.lmao.ninja/countries/norway'
-
-const endpointHistorical =
-  'https://cors-anywhere.herokuapp.com/https://corona.lmao.ninja/v2/historical/norway'
+const APIEndpoint = new NovelCovid()
 
 const Country = () => {
   const [current, setCurrent] = useState([])
@@ -23,31 +19,31 @@ const Country = () => {
 
   const fetchCurrent = async () => {
     setIsLoadingC(true)
-    await fetch(endpointCurrent)
-      .then(response => {
-        if (response.ok) {
-          return response.json()
+    await APIEndpoint.countries('norway')
+      .then((response) => {
+        if (response) {
+          return response
         } else {
           throw new Error('Error')
         }
       })
-      .then(response => setCurrent(response))
-      .catch(error => setErrorC({ error }))
+      .then((response) => setCurrent(response))
+      .catch((error) => setErrorC({ error }))
     setIsLoadingC(false)
   }
 
   const fetchHistorical = async () => {
     setIsLoadingH(true)
-    await fetch(endpointHistorical)
-      .then(response => {
-        if (response.ok) {
-          return response.json()
+    await APIEndpoint.historical(null, 'norway')
+      .then((response) => {
+        if (response) {
+          return response
         } else {
           throw new Error('Error')
         }
       })
-      .then(response => setHistorical(response))
-      .catch(error => setErrorH({ error }))
+      .then((response) => setHistorical(response))
+      .catch((error) => setErrorH({ error }))
     setIsLoadingH(false)
   }
 
@@ -58,7 +54,9 @@ const Country = () => {
 
   return !isLoadingC && !errorC && !isLoadingH && !errorH ? (
     <StatsCountry current={current} historical={historical} />
-  ) : <Loading />
+  ) : (
+    <Loading />
+  )
 }
 
 export default Country
