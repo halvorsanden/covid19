@@ -1,70 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import 'regenerator-runtime/runtime'
-import 'whatwg-fetch'
-import 'promise-polyfill/src/polyfill'
-import { NovelCovid } from 'novelcovid'
+import React from 'react'
 import WorldPercentage from './WorldPercentage.jsx'
-
-const APIEndpoint = new NovelCovid()
-
-const endpointPeople =
-  'https://cors-anywhere.herokuapp.com/https://d6wn6bmjj722w.population.io/1.0/population/World/today-and-tomorrow/'
 
 function round(value, precision) {
   const multiplier = Math.pow(10, precision || 0)
   return Math.round(value * multiplier) / multiplier
 }
 
-function formatNum(nja) {
-  return nja.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
+function formatNum(num) {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
 }
 
-const World = () => {
-  const [world, setWorld] = useState([])
-  const [isLoadingW, setIsLoadingW] = useState(true)
-  const [errorW, setErrorW] = useState(false)
-  const [people, setPeople] = useState({})
-  const [isLoadingP, setIsLoadingP] = useState(true)
-  const [errorP, setErrorP] = useState(false)
-
-  const fetchWorld = async () => {
-    setIsLoadingW(true)
-    await APIEndpoint.all()
-      .then((response) => {
-        if (response) {
-          return response
-        } else {
-          throw new Error('Error')
-        }
-      })
-      .then((response) => setWorld(response))
-      .catch((error) => setErrorW({ error }))
-    setIsLoadingW(false)
-  }
-
-  const fetchPeople = async () => {
-    setIsLoadingP(true)
-    await fetch(endpointPeople)
-      .then((response) => {
-        if (response.ok) {
-          return response.json()
-        } else {
-          throw new Error('Error')
-        }
-      })
-      .then((response) => setPeople(response))
-      .catch((error) => setErrorP({ error }))
-    setIsLoadingP(false)
-  }
-
-  useEffect(() => {
-    fetchWorld()
-    fetchPeople()
-  }, [])
-
+const World = ({ world, people }) => {
   const { cases, deaths, recovered } = world
 
-  return !isLoadingW && !errorW && !isLoadingP && !errorP ? (
+  return (
     <>
       <section className="statcard">
         <h2>Worldwide</h2>
@@ -92,7 +41,7 @@ const World = () => {
             </div>
           )}
           {world.recovered > 0 && (
-            <div className="recovered">
+            <div className="rnt rnt__recovered">
               <dt>Recovered</dt>
               <dd>{formatNum(recovered)}</dd>
             </div>
@@ -106,7 +55,7 @@ const World = () => {
         />
       )}
     </>
-  ) : null
+  )
 }
 
 export default World

@@ -1,36 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import 'regenerator-runtime/runtime'
-import 'promise-polyfill/src/polyfill'
-import { NovelCovid } from 'novelcovid'
 import Stats from './Stats.jsx'
 import World from './World.jsx'
-import Loading from './Loading.jsx'
 
-const APIEndpoint = new NovelCovid()
-
-const Countries = ({ showAll }) => {
-  const [countries, setCountries] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(false)
+const Countries = ({ showAll, world, people, countries }) => {
   const [showState, setShowState] = useState(showAll)
-
-  useEffect(() => {
-    setIsLoading(true)
-    const fetchCountries = async () => {
-      await APIEndpoint.countries()
-        .then((response) => {
-          if (response) {
-            return response
-          } else {
-            throw new Error('Error')
-          }
-        })
-        .then((response) => setCountries(response))
-        .catch((error) => setError({ error }))
-      setIsLoading(false)
-    }
-    fetchCountries()
-  }, [])
 
   useEffect(() => {
     setShowState(showAll)
@@ -39,7 +12,6 @@ const Countries = ({ showAll }) => {
   return (
     <>
       {!showState &&
-        (!isLoading && !error ? (
           countries.map((country, i) => (
             <React.Fragment key={i}>
               {country.country === 'Norway' ? <Stats {...country} /> : null}
@@ -51,17 +23,10 @@ const Countries = ({ showAll }) => {
               {country.country === 'Spain' ? <Stats {...country} /> : null}
               {country.country === 'France' ? <Stats {...country} /> : null}
             </React.Fragment>
-          ))
-        ) : (
-          <Loading />
-        ))}
-      <World />
+          ))}
+      <World people={people} world={world} />
       {showState &&
-        (!isLoading && !error ? (
-          countries.map((country, i) => <Stats key={i} {...country} />)
-        ) : (
-          <Loading />
-        ))}
+          countries.map((country, i) => <Stats key={i} {...country} />)}
     </>
   )
 }

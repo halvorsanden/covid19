@@ -5,21 +5,17 @@ function round(value, precision) {
   return Math.round(value * multiplier) / multiplier
 }
 
-const WorldPercentage = props => {
+const WorldPercentage = (props) => {
   const {
-    caseData: {
-      cases,
-      deaths,
-      recovered,
-    },
+    caseData: { cases, deaths, recovered },
     population
   } = props
 
   const everyone = population[0].population
-  const pCases = round((cases - deaths - recovered) / everyone * 100, 10)
-  const pTotal = round(cases / everyone * 100, 10)
-  const pDeaths = round(deaths / everyone * 100, 10)
-  const pRecovered = round(recovered / everyone * 100, 10)
+  const pCases = round(((cases - deaths - recovered) / everyone) * 100, 10)
+  const pTotal = round((cases / everyone) * 100, 10)
+  const pDeaths = round((deaths / everyone) * 100, 10)
+  const pRecovered = round((recovered / everyone) * 100, 10)
 
   return (
     <section className="statcard">
@@ -44,7 +40,7 @@ const WorldPercentage = props => {
           </div>
         )}
         {recovered > 0 && (
-          <div className="recovered">
+          <div className="rnt rnt__recovered">
             <dt>Recovered</dt>
             <dd>{pRecovered}&nbsp;%</dd>
           </div>

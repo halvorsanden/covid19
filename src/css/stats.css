@@ -25,8 +25,8 @@ dt {
 .cnd__dead,
 .cnd__died,
 .cnd__deadly,
-.recovered,
-.recovered--all {
+.rnt__recovered,
+.rnt__tests {
   display: flex;
   flex-flow: row wrap;
   align-items: baseline;
@@ -49,12 +49,12 @@ dt {
   padding-left: 0.4em;
 }
 
-.recovered {
+.rnt {
   border-left: 3px solid hsl(192, 82%, 64%);
   padding-left: 0.4em;
 }
 
-.recovered--all {
+.rnt--all {
   border-left: 3px solid hsl(88, 52%, 55%);
   padding-left: 0.4em;
 }
@@ -71,6 +71,11 @@ dt {
   line-height: 1;
 }
 
+.active dt span {
+  font-size: 0.8em;
+  font-weight: 400;
+}
+
 .active.percent dd {
   font-size: calc(1rem + 1vmin);
 }
@@ -84,9 +89,8 @@ dt {
 
 .cases dt,
 .cnd dt,
-.recovered dt,
-.recovered--all dt {
-  margin-right: 1ch;
+.rnt dt {
+  margin-right: 0.8ch;
 }
 
 .country {

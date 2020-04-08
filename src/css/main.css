@@ -45,6 +45,7 @@ nav,
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
+  margin-right: 1em;
 }
 
 button,
@@ -72,6 +73,10 @@ button {
 button:hover {
   background: hsl(0, 0%, 92%);
   border-color: hsl(0, 0%, 65%);
+}
+
+.updated {
+  font-size: 0.8rem;
 }
 
 main {

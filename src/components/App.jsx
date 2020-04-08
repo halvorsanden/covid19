@@ -1,6 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { NovelCovid } from 'novelcovid'
 import Countries from './Countries.jsx'
 import Country from './Country.jsx'
+import Loading from './Loading.jsx'
+import monthsAbbr from '../helpers/months.js'
+
+const APIEndpoint = new NovelCovid()
+const endpointPeople =
+  'https://cors-anywhere.herokuapp.com/https://d6wn6bmjj722w.population.io/1.0/population/World/today-and-tomorrow/'
+
+function dateTime(datestring) {
+  const date = new Date(datestring)
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const months = (month < 10 ? '0' : '') + month
+  const dateDay = date.getDate()
+  const dateDays = (dateDay < 10 ? '0' : '') + dateDay
+  const hour = date.getHours()
+  const hours = (hour < 10 ? '0' : '') + hour
+  const minute = date.getMinutes()
+  const minutes = (minute < 10 ? '0' : '') + minute
+  return `${year}-${months}-${dateDays} ${hours}:${minutes}`
+}
+
+function formatDate(updateMs) {
+  const update = new Date(updateMs)
+  const day = update.getDate()
+  const monthIndex = update.getMonth()
+  const month = monthsAbbr[monthIndex]
+  const hour = update.getHours()
+  const minute = update.getMinutes()
+  const minutes = (minute < 10 ? '0' : '') + minute
+  const updateReadable = `${month} ${day} ${hour}.${minutes}`
+  return updateReadable
+}
 
 const App = () => {
   const [show, setShow] = useState({
@@ -8,6 +41,15 @@ const App = () => {
     all: false,
     country: false
   })
+  const [countries, setCountries] = useState([])
+  const [isLoadingC, setIsLoadingC] = useState(true)
+  const [errorC, setErrorC] = useState(false)
+  const [world, setWorld] = useState([])
+  const [isLoadingW, setIsLoadingW] = useState(true)
+  const [errorW, setErrorW] = useState(false)
+  const [people, setPeople] = useState({})
+  const [isLoadingP, setIsLoadingP] = useState(true)
+  const [errorP, setErrorP] = useState(false)
 
   function activateSelected() {
     setShow({ selected: true, all: false, country: false })
@@ -18,6 +60,57 @@ const App = () => {
   function activateCountry() {
     setShow({ selected: false, all: false, country: true })
   }
+
+  const fetchPeople = async () => {
+    setIsLoadingP(true)
+    await fetch(endpointPeople)
+      .then((response) => {
+        if (response.ok) {
+          return response.json()
+        } else {
+          throw new Error('Error')
+        }
+      })
+      .then((response) => setPeople(response))
+      .catch((error) => setErrorP({ error }))
+    setIsLoadingP(false)
+  }
+
+  const fetchWorld = async () => {
+    setIsLoadingW(true)
+    await APIEndpoint.all()
+      .then((response) => {
+        if (response) {
+          return response
+        } else {
+          throw new Error('Error')
+        }
+      })
+      .then((response) => setWorld(response))
+      .catch((error) => setErrorW({ error }))
+    setIsLoadingW(false)
+  }
+
+  const fetchCountries = async () => {
+    setIsLoadingC(true)
+    await APIEndpoint.countries()
+      .then((response) => {
+        if (response) {
+          return response
+        } else {
+          throw new Error('Error')
+        }
+      })
+      .then((response) => setCountries(response))
+      .catch((error) => setErrorC({ error }))
+    setIsLoadingC(false)
+  }
+
+  useEffect(() => {
+    fetchPeople()
+    fetchWorld()
+    fetchCountries()
+  }, [])
 
   return (
     <>
@@ -42,12 +135,36 @@ const App = () => {
             <div className="btndeact">Norway (WIP)</div>
           )}
         </nav>
+        {!isLoadingW && !errorW
+          ? world.updated && (
+              <div className="updated">
+                Data updated{' '}
+                <time dateTime={dateTime(world.updated)}>
+                  {formatDate(world.updated)}
+                </time>
+              </div>
+            )
+          : null}
       </header>
       <main>
-        {!show.country ? (
-          <Countries showAll={show.all} />
+        {!isLoadingW &&
+        !errorW &&
+        !isLoadingP &&
+        !errorP &&
+        !isLoadingC &&
+        !errorC ? (
+          !show.country ? (
+            <Countries
+              countries={countries}
+              showAll={show.all}
+              world={world}
+              people={people}
+            />
+          ) : (
+            <Country showCountry={show.country} />
+          )
         ) : (
-          <Country showCountry={show.country} />
+          <Loading />
         )}
       </main>
       <footer>
@@ -60,7 +177,10 @@ const App = () => {
           <a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series">
             github.com/CSSEGISandData/COVID-19
           </a>{' '}
-          + <a href="https://population.io/">population.io</a>
+          + <a href="https://population.io/">population.io</a> API:{' '}
+          <a href="https://github.com/NovelCOVID/API">
+            github.com/NovelCOVID/API
+          </a>
         </p>
         <a className="devlogo" aria-label="D+D: 8 Yard" href="https://8yd.no">
           <svg

@@ -1,10 +1,6 @@
 import React, { useState, Fragment } from 'react'
 import Stats from './Stats.jsx'
-
-function round(value, precision) {
-  const multiplier = Math.pow(10, precision || 0)
-  return Math.round(value * multiplier) / multiplier
-}
+import monthsAbbr from '../helpers/months.js'
 
 function formatNum(num) {
   return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
@@ -12,23 +8,26 @@ function formatNum(num) {
 
 function dateFormat(datestring) {
   const parts = datestring.match(/(\d{1,2})\/(\d{1,2})\/(\d{2})/)
-  const month = parts[1]
+  const monthIndex = parts[1] - 1
+  const month = monthsAbbr[monthIndex]
   const dateday = parts[2]
   if (dateday == 1) {
-    return dateday + '. ' + month
+    return `${dateday}. ${month}`
   } else {
-    return dateday + '.'
+    return dateday
   }
 }
 
 function dateTime(datestring) {
   const parts = datestring.match(/(\d{1,2})\/(\d{1,2})\/(\d{2})/)
-  const epoch = Date.UTC(20 + parts[3], parts[1], parts[2])
+  const epoch = Date.UTC(20 + parts[3], +parts[1], +parts[2])
   const date = new Date(epoch)
   const year = date.getFullYear()
   const month = date.getMonth()
-  const dateday = date.getDate()
-  return year + '-' + month + '-' + dateday
+  const months = (month < 10 ? '0' : '') + month
+  const dateDay = date.getDate()
+  const dateDays = (dateDay < 10 ? '0' : '') + dateDay
+  return `${year}-${months}-${dateDays}`
 }
 
 function logHeight(caseInt) {
