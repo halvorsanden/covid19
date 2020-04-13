@@ -1,10 +1,7 @@
 import React, { useState, Fragment } from 'react'
 import Stats from './Stats.jsx'
 import monthsAbbr from '../helpers/months.js'
-
-function formatNum(num) {
-  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
-}
+import { formatNum } from '../helpers/numberfuncs.js'
 
 function dateFormat(datestring) {
   const parts = datestring.match(/(\d{1,2})\/(\d{1,2})\/(\d{2})/)

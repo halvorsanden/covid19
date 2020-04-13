@@ -1,9 +1,5 @@
 import React from 'react'
-
-function round(value, precision) {
-  const multiplier = Math.pow(10, precision || 0)
-  return Math.round(value * multiplier) / multiplier
-}
+import { round } from '../helpers/numberfuncs.js'
 
 const WorldPercentage = (props) => {
   const {

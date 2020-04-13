@@ -1,14 +1,6 @@
 import React, { Suspense, lazy } from 'react'
+import { formatNum, round } from '../helpers/numberfuncs.js'
 const WorldPercentage = lazy(() => import('./WorldPercentage.jsx'))
-
-function round(value, precision) {
-  const multiplier = Math.pow(10, precision || 0)
-  return Math.round(value * multiplier) / multiplier
-}
-
-function formatNum(num) {
-  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
-}
 
 const World = ({ world, people, loadingP, errorP }) => {
   const { cases, deaths, recovered } = world
