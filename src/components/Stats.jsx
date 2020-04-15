@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { formatNum, round } from '../helpers/numberfuncs.js'
 
 const Stats = ({

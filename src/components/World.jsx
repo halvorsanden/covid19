@@ -1,4 +1,5 @@
-import React, { Suspense, lazy } from 'react'
+import * as React from 'react'
+import { Suspense, lazy } from 'react'
 import { formatNum, round } from '../helpers/numberfuncs.js'
 const WorldPercentage = lazy(() => import('./WorldPercentage.jsx'))
 

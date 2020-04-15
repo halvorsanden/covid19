@@ -1,4 +1,5 @@
-import React, { useState, Fragment } from 'react'
+import * as React from 'react'
+import { useState, Fragment } from 'react'
 import Stats from './Stats.jsx'
 import monthsAbbr from '../helpers/months.js'
 import { formatNum } from '../helpers/numberfuncs.js'

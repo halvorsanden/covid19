@@ -1,4 +1,5 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react'
+import * as React from 'react'
+import { useState, useEffect, Suspense, lazy } from 'react'
 import 'regenerator-runtime/runtime'
 import { NovelCovid } from 'novelcovid'
 import Countries from './Countries.jsx'
