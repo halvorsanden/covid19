@@ -32,21 +32,17 @@ function logHeight(caseInt) {
   const length = (Math.log(caseInt) * Math.LOG10E + 1) | 0
   switch (length) {
     case 1:
-      return 11.5 + caseInt * 1.25 + '%'
+      return 15.668 + caseInt * 1.6666 + '%'
     case 2:
-      return 24 + caseInt * 0.125 + '%'
+      return 32.334 + caseInt * 0.16666 + '%'
     case 3:
-      return 36.5 + caseInt * 0.0125 + '%'
+      return 49 + caseInt * 0.016666 + '%'
     case 4:
-      return 49 + caseInt * 0.00125 + '%'
+      return 65.667 + caseInt * 0.0016666 + '%'
     case 5:
-      return 61.5 + caseInt * 0.000125 + '%'
+      return 82.334 + caseInt * 0.00016666 + '%'
     case 6:
-      return 74 + caseInt * 0.0000125 + '%'
-    case 7:
-      return 86.5 + caseInt * 0.0000125 + '%'
-    case 8:
-      return 99 + caseInt * 0.00000125 + '%'
+      return 99 + caseInt * 0.000016666 + '%'
   }
 }
 
@@ -82,6 +78,8 @@ const StatsCountry = ({ current, historical: { timeline } }) => {
             </div>
             <div className="country-chart">
               <div className="linewrapper">
+                <div className="chart-line-lin">12 000</div>
+                <div className="chart-line-lin">11 000</div>
                 <div className="chart-line-lin">10 000</div>
                 <div className="chart-line-lin">9 000</div>
                 <div className="chart-line-lin">8 000</div>
@@ -98,7 +96,7 @@ const StatsCountry = ({ current, historical: { timeline } }) => {
                   <div
                     key={i}
                     className="case-bar"
-                    style={{ height: `calc(0.01% * ${caseValue})` }}
+                    style={{ height: `calc(0.008333% * ${caseValue})` }}
                   >
                     {formatNum(caseValue)}
                   </div>
@@ -121,8 +119,6 @@ const StatsCountry = ({ current, historical: { timeline } }) => {
             </div>
             <div className="country-chart">
               <div className="linewrapper">
-                <div className="chart-line-log">10 000 000</div>
-                <div className="chart-line-log">1 000 000</div>
                 <div className="chart-line-log">100 000</div>
                 <div className="chart-line-log">10 000</div>
                 <div className="chart-line-log">1 000</div>
@@ -138,7 +134,7 @@ const StatsCountry = ({ current, historical: { timeline } }) => {
                         key={i}
                         className="case-bar"
                         style={{
-                          height: '12.5%'
+                          height: '16.666%'
                         }}
                       >
                         {caseValue}

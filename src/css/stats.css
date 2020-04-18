@@ -113,22 +113,27 @@ dt {
   flex-flow: column nowrap;
   justify-content: stretch;
   width: 99%;
+  height: 48vh;
+  min-height: 26rem;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: hsl(0, 0%, 40%);
 }
 
 .chart-line-log {
-  flex: 0 0 12.5%;
+  flex: 0 0 16.666%;
   border-top: 1px solid hsla(3, 93%, 60%, 0.4);
 }
 
 .chart-line-lin {
-  flex: 0 0 10%;
+  flex: 0 0 8.333%;
   border-top: 1px solid hsla(3, 93%, 60%, 0.4);
 }
 
 .barwrapper {
   grid-area: values;
-  height: 40vh;
-  min-height: 25rem;
+  height: 48vh;
+  min-height: 26rem;
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-end;
