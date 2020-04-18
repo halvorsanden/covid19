@@ -10,9 +10,12 @@ import CountryChart from './CountryChart.jsx'
 const APIEndpoint = new NovelCovid()
 
 const Country = () => {
-  const [current, setCurrent] = useState([])
+  const [current, setCurrent] = useState({})
   const [isLoadingC, setIsLoadingC] = useState(true)
   const [errorC, setErrorC] = useState(false)
+  const [yesterday, setYesterday] = useState({})
+  const [isLoadingY, setIsLoadingY] = useState(true)
+  const [errorY, setErrorY] = useState(false)
   const [historical, setHistorical] = useState({})
   const [isLoadingH, setIsLoadingH] = useState(true)
   const [errorH, setErrorH] = useState(false)
@@ -32,6 +35,21 @@ const Country = () => {
     setIsLoadingC(false)
   }
 
+  const fetchYesterday = async () => {
+    setIsLoadingY(true)
+    await APIEndpoint.countries('norway', { yesterday: true })
+      .then((response) => {
+        if (response) {
+          return response
+        } else {
+          throw new Error('Error')
+        }
+      })
+      .then((response) => setYesterday(response))
+      .catch((error) => setErrorY({ error }))
+    setIsLoadingY(false)
+  }
+
   const fetchHistorical = async () => {
     setIsLoadingH(true)
     await APIEndpoint.historical(null, 'norway')
@@ -49,12 +67,19 @@ const Country = () => {
 
   useEffect(() => {
     fetchCurrent()
+    fetchYesterday()
     fetchHistorical()
   }, [])
 
-  return !isLoadingC && !errorC && !isLoadingH && !errorH ? (
+  return !isLoadingC &&
+    !errorC &&
+    !isLoadingY &&
+    !errorY &&
+    !isLoadingH &&
+    !errorH ? (
     <>
-      <CountryStats current={current} />
+      <h2>{current.country}</h2>
+      <CountryStats c={current} y={yesterday} />
       <CountryChart historical={historical} />
     </>
   ) : (

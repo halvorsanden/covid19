@@ -41,6 +41,17 @@ h1 span {
   font-weight: 500;
 }
 
+h2 {
+  font-size: calc(1.1rem + 0.5vmin);
+  margin-bottom: 0.1em;
+  color: hsl(0, 0%, 30%);
+}
+
+h3 {
+  margin-bottom: 0.5em;
+  font-weight: 600;
+}
+
 nav,
 .nav {
   display: flex;
