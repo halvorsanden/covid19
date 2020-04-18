@@ -2,7 +2,8 @@ import * as React from 'react'
 import { useState, useEffect } from 'react'
 import { NovelCovid } from 'novelcovid'
 import Loading from './Loading.jsx'
-import StatsCountry from './StatsCountry.jsx'
+import CountryStats from './CountryStats.jsx'
+import CountryChart from './CountryChart.jsx'
 
 // Experimental, can probably be changed to input at some time to feature other countries
 
@@ -52,7 +53,10 @@ const Country = () => {
   }, [])
 
   return !isLoadingC && !errorC && !isLoadingH && !errorH ? (
-    <StatsCountry current={current} historical={historical} />
+    <>
+      <CountryStats current={current} />
+      <CountryChart historical={historical} />
+    </>
   ) : (
     <Loading />
   )
