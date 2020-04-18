@@ -95,7 +95,7 @@ const App = () => {
 
   const fetchCountries = async () => {
     setIsLoadingC(true)
-    await APIEndpoint.countries(null, 'cases')
+    await APIEndpoint.countries(null, { sort: 'cases' })
       .then((response) => {
         if (response) {
           return response
