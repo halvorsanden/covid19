@@ -45,7 +45,7 @@ function logHeight(caseInt) {
   }
 }
 
-const CountryChart = ({ current, historical: { timeline } }) => {
+const CountryChart = ({ historical: { timeline } }) => {
   const [showLog, setShowLog] = useState(false)
   function hideLine() {
     setShowLog(true)
