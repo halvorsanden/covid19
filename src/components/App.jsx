@@ -38,10 +38,8 @@ function formatDate(updateMs) {
   return updateReadable
 }
 
-let params = new URLSearchParams(window.location.search)
-let searchParam = params.get('show')
 let url = new URL(window.location.href)
-let setParams = url.searchParams
+let hash = url.hash
 
 const App = () => {
   const [show, setShow] = useState({
@@ -61,33 +59,24 @@ const App = () => {
 
   function activateSelected() {
     setShow({ selected: true, all: false, country: false })
-    setParams.set('show', 'selected')
-    url.search = setParams.toString()
-    ;(!searchParam || searchParam != 'selected') &&
-      (window.location.href = url.search)
+    history.pushState(null, null, '#selected')
   }
   function activateAll() {
     setShow({ selected: false, all: true, country: false })
-    setParams.set('show', 'all')
-    url.search = setParams.toString()
-    ;(!searchParam || searchParam != 'all') &&
-      (window.location.href = url.search)
+    history.pushState(null, null, '#all')
   }
   function activateCountry() {
     setShow({ selected: false, all: false, country: true })
-    setParams.set('show', 'country')
-    url.search = setParams.toString()
-    ;(!searchParam || searchParam != 'country') &&
-      (window.location.href = url.search)
+    history.pushState(null, null, '#country')
   }
 
   function getParams(navParam) {
     switch (navParam) {
-      case 'selected':
+      case '#selected':
         return activateSelected()
-      case 'all':
+      case '#all':
         return activateAll()
-      case 'country':
+      case '#country':
         return activateCountry()
     }
   }
@@ -141,7 +130,7 @@ const App = () => {
     fetchPeople()
     fetchWorld()
     fetchCountries()
-    getParams(searchParam)
+    getParams(hash)
   }, [])
 
   return (
