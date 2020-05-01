@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 import { NovelCovid } from 'novelcovid'
-import Loading from './Loading.jsx'
+import Loading from './uicomponents/Loading.jsx'
 import CountryStats from './CountryStats.jsx'
 import CountryChart from './CountryChart.jsx'
 

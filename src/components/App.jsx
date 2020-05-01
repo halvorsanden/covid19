@@ -2,7 +2,8 @@ import * as React from 'react'
 import { useState, useEffect, Suspense, lazy } from 'react'
 import 'regenerator-runtime/runtime'
 import { NovelCovid } from 'novelcovid'
-import Loading from './Loading.jsx'
+import Loading from './uicomponents/Loading.jsx'
+import BtnDeact from './uicomponents/BtnDeact.jsx'
 import monthsAbbr from '../helpers/months.js'
 const Countries = lazy(() => import('./Countries.jsx'))
 const Country = lazy(() => import('./Country.jsx'))
@@ -153,17 +154,17 @@ const App = () => {
           {!show.selected ? (
             <button onClick={activateSelected}>Selected countries</button>
           ) : (
-            <div className="btndeact">Selected countries</div>
+            <BtnDeact text="Selected countries" />
           )}
           {!show.all ? (
             <button onClick={activateAll}>All countries</button>
           ) : (
-            <div className="btndeact">All countries</div>
+            <BtnDeact text="All countries" />
           )}
           {!show.country ? (
             <button onClick={activateCountry}>Norway (WIP)</button>
           ) : (
-            <div className="btndeact">Norway (WIP)</div>
+            <BtnDeact text="Norway (WIP)" />
           )}
         </nav>
         {!isLoadingW && !errorW
