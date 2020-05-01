@@ -34,10 +34,12 @@ const Stats = ({
           <dt>Total</dt>
           <dd>{cases && formatNum(cases)}</dd>
         </div>
-        <div className="cases__total">
-          <dt>Total/M</dt>
-          <dd>{casesPerOneMillion && formatNum(casesPerOneMillion)}</dd>
-        </div>
+        {casesPerOneMillion > 0 && casesPerOneMillion < cases && (
+          <div className="cases__total">
+            <dt>Total/M</dt>
+            <dd>{casesPerOneMillion && formatNum(casesPerOneMillion)}</dd>
+          </div>
+        )}
       </div>
       {critical + deaths > 0 && (
         <div className="cnd">
@@ -59,7 +61,7 @@ const Stats = ({
               <dd>{formatNum(deaths)}</dd>
             </div>
           )}
-          {deathsPerOneMillion > 0 && (
+          {deathsPerOneMillion > 0 && deathsPerOneMillion < deaths && (
             <div className="cnd__dead">
               <dt>Dead/M</dt>
               <dd>{formatNum(deathsPerOneMillion)}</dd>

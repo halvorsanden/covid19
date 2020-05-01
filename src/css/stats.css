@@ -78,6 +78,7 @@ dt {
 
 .cases dt,
 .cnd dt,
-.rnt dt {
+.rnt dt,
+.rnt--all dt {
   margin-right: 0.8ch;
 }
