@@ -106,4 +106,5 @@ td {
   padding-right: 0.5em;
   padding-left: 0.5em;
   border: 1px solid transparent;
+  white-space: nowrap;
 }

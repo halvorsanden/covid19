@@ -27,8 +27,10 @@ const CountryStats = ({ c, y }) => {
             <th scope="row">Today</th>
             <td>{formatNum(c.active)}</td>
             <td>{c.todayCases > 0 && formatNum(c.todayCases)}</td>
-            <td>
-              {c.todayCases > 0 && round((c.todayCases / c.cases) * 100, 3)} %
+            <td className="ws-nowrap">
+              {c.todayCases > 0 && (
+                <>{round((c.todayCases / c.cases) * 100, 3)} %</>
+              )}
             </td>
             <td>{c.cases && formatNum(c.cases)}</td>
             <td>{c.casesPerOneMillion && formatNum(c.casesPerOneMillion)}</td>
@@ -38,7 +40,9 @@ const CountryStats = ({ c, y }) => {
             <td>
               {c.deathsPerOneMillion > 0 && formatNum(c.deathsPerOneMillion)}
             </td>
-            <td>{c.deaths > 0 && round((c.deaths / c.cases) * 100, 4)} %</td>
+            <td className="ws-nowrap">
+              {c.deaths > 0 && <>{round((c.deaths / c.cases) * 100, 4)} %</>}
+            </td>
             <td>{c.recovered > 0 && formatNum(c.recovered)}</td>
             <td>{c.tests > 0 && formatNum(c.tests)}</td>
           </tr>
@@ -46,8 +50,10 @@ const CountryStats = ({ c, y }) => {
             <th scope="row">Yesterday</th>
             <td>{formatNum(y.active)}</td>
             <td>{y.todayCases > 0 && formatNum(y.todayCases)}</td>
-            <td>
-              {y.todayCases > 0 && round((y.todayCases / y.cases) * 100, 3)} %
+            <td className="ws-nowrap">
+              {y.todayCases > 0 && (
+                <>{round((y.todayCases / y.cases) * 100, 3)} %</>
+              )}
             </td>
             <td>{y.cases && formatNum(y.cases)}</td>
             <td>{y.casesPerOneMillion && formatNum(y.casesPerOneMillion)}</td>
@@ -57,7 +63,9 @@ const CountryStats = ({ c, y }) => {
             <td>
               {y.deathsPerOneMillion > 0 && formatNum(y.deathsPerOneMillion)}
             </td>
-            <td>{y.deaths > 0 && round((y.deaths / y.cases) * 100, 4)} %</td>
+            <td className="ws-nowrap">
+              {y.deaths > 0 && <>{round((y.deaths / y.cases) * 100, 4)} %</>}
+            </td>
             <td>{y.recovered > 0 && formatNum(y.recovered)}</td>
             <td>{y.tests > 0 && formatNum(y.tests)}</td>
           </tr>

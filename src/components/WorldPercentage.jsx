@@ -8,10 +8,10 @@ const WorldPercentage = (props) => {
   } = props
 
   const everyone = population[0].population
-  const pCases = round(((cases - deaths - recovered) / everyone) * 100, 10)
-  const pTotal = round((cases / everyone) * 100, 10)
-  const pDeaths = round((deaths / everyone) * 100, 10)
-  const pRecovered = round((recovered / everyone) * 100, 10)
+  const pCases = round(((cases - deaths - recovered) / everyone) * 100, 6)
+  const pTotal = round((cases / everyone) * 100, 6)
+  const pDeaths = round((deaths / everyone) * 100, 6)
+  const pRecovered = round((recovered / everyone) * 100, 6)
 
   return (
     cases &&
@@ -21,26 +21,26 @@ const WorldPercentage = (props) => {
         <dl>
           <div className="active percent">
             <dt>Active</dt>
-            <dd>{pCases}&nbsp;%</dd>
+            <dd className="ws-nowrap">{pCases} %</dd>
           </div>
           {cases > 0 && (
             <div className="cases cases__total">
               <dt>Total</dt>
-              <dd>{pTotal}&nbsp;%</dd>
+              <dd className="ws-nowrap">{pTotal} %</dd>
             </div>
           )}
           {deaths > 0 && (
             <div className="cnd">
               <div className="cnd__dead">
                 <dt>Dead</dt>
-                <dd>{pDeaths}&nbsp;%</dd>
+                <dd className="ws-nowrap">{pDeaths} %</dd>
               </div>
             </div>
           )}
           {recovered > 0 && (
             <div className="rnt rnt__recovered">
               <dt>Recovered</dt>
-              <dd>{pRecovered}&nbsp;%</dd>
+              <dd className="ws-nowrap">{pRecovered} %</dd>
             </div>
           )}
         </dl>
