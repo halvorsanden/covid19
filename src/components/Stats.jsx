@@ -18,7 +18,11 @@ const Stats = ({
     <h2>{country}</h2>
     <dl>
       <div className="active">
-        {active != 1 ? <dt>Active cases</dt> : <dt>Active case</dt>}
+        {active != 1 ? (
+          <dt>Active cases{recovered < 1 && '? 🤷‍♂️'}</dt>
+        ) : (
+          <dt>Active case</dt>
+        )}
         <dd>{formatNum(active)}</dd>
       </div>
       <div className="cases">
