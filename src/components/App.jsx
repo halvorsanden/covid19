@@ -151,9 +151,9 @@ const App = () => {
             <BtnDeact text="All countries" />
           )}
           {!show.country ? (
-            <button onClick={activateCountry}>Norway (WIP)</button>
+            <button onClick={activateCountry}>Norway</button>
           ) : (
-            <BtnDeact text="Norway (WIP)" />
+            <BtnDeact text="Norway" />
           )}
         </nav>
         {!isLoadingW && !errorW

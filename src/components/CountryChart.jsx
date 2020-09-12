@@ -28,21 +28,7 @@ function dateTime(datestring) {
 }
 
 function logHeight(caseInt) {
-  const length = (Math.log(caseInt) * Math.LOG10E + 1) | 0
-  switch (length) {
-    case 1:
-      return 15.668 + caseInt * 1.6666 + '%'
-    case 2:
-      return 32.334 + caseInt * 0.16666 + '%'
-    case 3:
-      return 49 + caseInt * 0.016666 + '%'
-    case 4:
-      return 65.667 + caseInt * 0.0016666 + '%'
-    case 5:
-      return 82.334 + caseInt * 0.00016666 + '%'
-    case 6:
-      return 99 + caseInt * 0.000016666 + '%'
-  }
+  return (100 * Math.log(caseInt)) / Math.log(100000) + '%'
 }
 
 const CountryChart = ({ historical: { timeline } }) => {
@@ -75,25 +61,25 @@ const CountryChart = ({ historical: { timeline } }) => {
           </div>
           <div className="country-chart">
             <div className="linewrapper">
+              <div className="chart-line-lin">24 000</div>
+              <div className="chart-line-lin">22 000</div>
+              <div className="chart-line-lin">20 000</div>
+              <div className="chart-line-lin">18 000</div>
+              <div className="chart-line-lin">16 000</div>
+              <div className="chart-line-lin">14 000</div>
               <div className="chart-line-lin">12 000</div>
-              <div className="chart-line-lin">11 000</div>
               <div className="chart-line-lin">10 000</div>
-              <div className="chart-line-lin">9 000</div>
               <div className="chart-line-lin">8 000</div>
-              <div className="chart-line-lin">7 000</div>
               <div className="chart-line-lin">6 000</div>
-              <div className="chart-line-lin">5 000</div>
               <div className="chart-line-lin">4 000</div>
-              <div className="chart-line-lin">3 000</div>
               <div className="chart-line-lin">2 000</div>
-              <div className="chart-line-lin">1 000</div>
             </div>
             <div className="barwrapper">
               {tlCasesValue.map((caseValue, i) => (
                 <div
                   key={i}
                   className="case-bar"
-                  style={{ height: `calc(0.008333% * ${caseValue})` }}
+                  style={{ height: `calc(0.004175% * ${caseValue})` }}
                 >
                   {formatNum(caseValue)}
                 </div>
@@ -121,7 +107,6 @@ const CountryChart = ({ historical: { timeline } }) => {
               <div className="chart-line-log">1 000</div>
               <div className="chart-line-log">100</div>
               <div className="chart-line-log">10</div>
-              <div className="chart-line-log">1</div>
             </div>
             <div className="barwrapper">
               {tlCasesValue.map((caseValue, i) => (
@@ -131,7 +116,7 @@ const CountryChart = ({ historical: { timeline } }) => {
                       key={i}
                       className="case-bar"
                       style={{
-                        height: '16.666%'
+                        height: '20%'
                       }}
                     >
                       {caseValue}
