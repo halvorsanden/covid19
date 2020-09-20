@@ -100,11 +100,11 @@ const CountryStats = ({ c, y }) => {
             <dd>
               {c.deathsPerOneMillion > 0 && formatNum(c.deathsPerOneMillion)}
             </dd>
-            <dt>Recovered</dt>
+            <dt>Deadliness</dt>
             <dd className="ws-nowrap">
               {c.deaths > 0 && round((c.deaths / c.cases) * 100, 4) + ' %'}
             </dd>
-            <dt>Deadliness</dt>
+            <dt>Recovered</dt>
             <dd>{c.recovered > 0 && formatNum(c.recovered)}</dd>
             <dt>Tests</dt>
             <dd>{c.tests > 0 && formatNum(c.tests)}</dd>
