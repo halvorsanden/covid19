@@ -52,7 +52,10 @@ const CountryChart = ({ historical: { timeline } }) => {
 
   return (
     <section className="country">
-      <h3>Total 30 days</h3>
+      <h3>
+        {formatNum(tlCasesValue[29] - tlCasesValue[0])} new cases in the last 30
+        days
+      </h3>
       {!showLog ? (
         <>
           <div className="nav">
