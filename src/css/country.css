@@ -146,3 +146,8 @@ td {
   border: 1px solid transparent;
   white-space: nowrap;
 }
+
+.tenday {
+  margin-bottom: 1rem;
+  list-style: none;
+}

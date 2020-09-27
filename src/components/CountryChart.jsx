@@ -56,6 +56,32 @@ const CountryChart = ({ historical: { timeline } }) => {
         {formatNum(tlCasesValue[29] - tlCasesValue[0])} new cases in the last 30
         days
       </h3>
+      <ul className="tenday">
+        <li>
+          {formatNum(tlCasesValue[29] - tlCasesValue[20])} new cases in the last
+          10 days (
+          {formatNum(
+            tlCasesValue[29] -
+              tlCasesValue[20] -
+              (tlCasesValue[19] - tlCasesValue[10])
+          )}
+          )
+        </li>
+        <li>
+          {formatNum(tlCasesValue[19] - tlCasesValue[10])} new cases in the
+          previous 10 days (
+          {formatNum(
+            tlCasesValue[19] -
+              tlCasesValue[10] -
+              (tlCasesValue[9] - tlCasesValue[0])
+          )}
+          )
+        </li>
+        <li>
+          {formatNum(tlCasesValue[9] - tlCasesValue[0])} new cases in the 10
+          days before that
+        </li>
+      </ul>
       {!showLog ? (
         <>
           <div className="nav">
