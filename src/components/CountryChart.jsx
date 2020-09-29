@@ -31,6 +31,21 @@ function logHeight(caseInt) {
   return (100 * Math.log(caseInt)) / Math.log(100000) + '%'
 }
 
+function tenDayDiff(casesValue, lastDay) {
+  const diff = formatNum(
+    casesValue[lastDay] -
+      casesValue[lastDay - 9] -
+      (casesValue[lastDay - 10] - casesValue[lastDay - 19])
+  )
+  if (diff > 0) {
+    return diff + ' more than previous ten days'
+  } else if (diff < 0) {
+    return -diff + ' fewer than previous ten days'
+  } else {
+    return 'Same increase as the previous ten days'
+  }
+}
+
 const CountryChart = ({ historical: { timeline } }) => {
   const [showLog, setShowLog] = useState(false)
   function hideLine() {
@@ -58,28 +73,15 @@ const CountryChart = ({ historical: { timeline } }) => {
       </h3>
       <ul className="tenday">
         <li>
-          {formatNum(tlCasesValue[29] - tlCasesValue[20])} new cases in the last
-          10 days (
-          {formatNum(
-            tlCasesValue[29] -
-              tlCasesValue[20] -
-              (tlCasesValue[19] - tlCasesValue[10])
-          )}
-          )
+          {formatNum(tlCasesValue[29] - tlCasesValue[20])} new cases day 21–30 (
+          {tenDayDiff(tlCasesValue, 29)})
         </li>
         <li>
-          {formatNum(tlCasesValue[19] - tlCasesValue[10])} new cases in the
-          previous 10 days (
-          {formatNum(
-            tlCasesValue[19] -
-              tlCasesValue[10] -
-              (tlCasesValue[9] - tlCasesValue[0])
-          )}
-          )
+          {formatNum(tlCasesValue[19] - tlCasesValue[10])} new cases day 11–20 (
+          {tenDayDiff(tlCasesValue, 19)})
         </li>
         <li>
-          {formatNum(tlCasesValue[9] - tlCasesValue[0])} new cases in the 10
-          days before that
+          {formatNum(tlCasesValue[9] - tlCasesValue[0])} new cases day 1–10
         </li>
       </ul>
       {!showLog ? (
