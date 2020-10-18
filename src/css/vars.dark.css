@@ -1,0 +1,19 @@
+body {
+  --text: hsl(0, 0%, 82%);
+  --htext: hsl(0, 0%, 70%);
+  --bodybackground: hsl(214, 20%, 10%);
+  --headerbackground: hsl(214, 25%, 6%);
+  --border: hsl(214, 8%, 25%);
+  --title: hsl(0, 43%, 75%);
+  --btnback: hsl(214, 25%, 6%);
+  --btndeactback: hsl(214, 10%, 18%);
+  --btndeactborder: hsl(214, 5%, 40%);
+  --btnhoverback: hsl(214, 20%, 10%);
+  --btnhoverborder: hsl(214, 5%, 35%);
+  --casebar: hsla(214, 10%, 50%, 0.6);
+  --casebarborder: hsl(214, 10%, 42%);
+  --red: hsl(3, 50%, 46%);
+  --orange: hsl(34, 42%, 52%);
+  --blue: hsl(192, 41%, 40%);
+  --green: hsl(88, 32%, 41%);
+}

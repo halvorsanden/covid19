@@ -1,12 +1,13 @@
+@import 'vars.dark.css';
+@import 'vars.light.css';
 @import 'reset.css';
 @import 'stats.css';
 @import 'country.css';
 
 html {
-  height: 100%;
+  min-height: 100%;
   font-size: 100%;
   line-height: 135%;
-  color: hsl(0, 0%, 15%);
   font-weight: normal;
   font-family: system-ui, /* macOS 10.11-10.12 */ -apple-system,
     /* Windows 6+ */ Segoe UI, /* Android 4+ */ Roboto,
@@ -16,16 +17,17 @@ html {
 
 body {
   height: 100%;
-  background-color: hsl(0, 0%, 95%);
+  background-color: var(--bodybackground);
+  color: var(--text);
 }
 
 header {
-  background-color: hsl(0, 0%, 90%);
+  background-color: var(--headerbackground);
   padding: 0.6rem 2.5vw 0.5rem;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  border-bottom: 1px solid hsl(0, 0%, 75%);
+  border-bottom: 1px solid var(--border);
 }
 
 h1 {
@@ -34,7 +36,7 @@ h1 {
   margin-right: 1em;
   margin-bottom: 0.2em;
   margin-top: 0.1em;
-  color: hsl(0, 56%, 60%);
+  color: var(--title);
 }
 
 h1 span {
@@ -44,7 +46,7 @@ h1 span {
 h2 {
   font-size: calc(1.1rem + 0.5vmin);
   margin-bottom: 0.1em;
-  color: hsl(0, 0%, 30%);
+  color: var(--htext);
 }
 
 h3 {
@@ -62,16 +64,17 @@ nav,
 
 button,
 .btndeact {
-  border: 1px solid hsl(0, 0%, 70%);
+  border: 1px solid var(--border);
   padding: 0.3em 0.6em;
   font-size: 0.8rem;
   line-height: 1.4;
   margin-right: -1px;
+  color: var(--text);
 }
 
 .btndeact {
-  background: hsl(0, 0%, 82%);
-  border-color: hsl(0, 0%, 60%);
+  background: var(--btndeactback);
+  border-color: var(--btndeactborder);
 }
 
 button {
@@ -79,12 +82,12 @@ button {
     /* Windows 6+ */ Segoe UI, /* Android 4+ */ Roboto,
     /* Ubuntu 10.10+ */ Ubuntu, /* Gnome 3+ */ Cantarell,
     /* KDE Plasma 5+ */ Noto Sans, /* fallback */ sans-serif;
-  background: hsl(0, 0%, 98%);
+  background: var(--btnback);
 }
 
 button:hover {
-  background: hsl(0, 0%, 92%);
-  border-color: hsl(0, 0%, 65%);
+  background: var(--btnhoverback);
+  border-color: var(--btnhoverborder);
 }
 
 .updated {
@@ -102,7 +105,7 @@ main {
 }
 
 .loading {
-  stroke: hsl(0, 56%, 60%);
+  stroke: var(--title);
   width: 6rem;
 }
 
@@ -123,7 +126,7 @@ footer a:visited {
 
 footer a:hover,
 footer a:focus {
-  color: hsl(0, 0%, 15%);
+  color: var(--text);
 }
 
 .devlogo:link,
@@ -133,5 +136,5 @@ footer a:focus {
 
 .devlogo:hover,
 .devlogo:active {
-  color: hsl(0, 0%, 15%);
+  color: var(--text);
 }

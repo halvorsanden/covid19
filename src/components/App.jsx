@@ -41,6 +41,10 @@ function formatDate(updateMs) {
 let url = new URL(window.location.href)
 let hash = url.hash
 
+function darkLight() {
+  document.body.classList.toggle('light')
+}
+
 const App = () => {
   const [show, setShow] = useState({
     selected: true,
@@ -166,6 +170,7 @@ const App = () => {
               </div>
             )
           : null}
+        <button onClick={darkLight}>Mode</button>
       </header>
       <main>
         {!isLoadingW && !errorW && !isLoadingC && !errorC ? (

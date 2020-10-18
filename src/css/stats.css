@@ -29,22 +29,22 @@ dt {
 }
 
 .cases {
-  border-left: 3px solid hsl(34, 93%, 61%);
+  border-left: 3px solid var(--orange);
   padding-left: 0.4em;
 }
 
 .cnd {
-  border-left: 3px solid hsl(3, 93%, 60%);
+  border-left: 3px solid var(--red);
   padding-left: 0.4em;
 }
 
 .rnt {
-  border-left: 3px solid hsl(192, 82%, 64%);
+  border-left: 3px solid var(--blue);
   padding-left: 0.4em;
 }
 
 .rnt--all {
-  border-left: 3px solid hsl(88, 52%, 55%);
+  border-left: 3px solid var(--green);
   padding-left: 0.4em;
 }
 
