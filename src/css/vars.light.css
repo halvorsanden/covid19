@@ -5,8 +5,8 @@ body.light {
   --headerbackground: hsl(0, 0%, 90%);
   --border: hsl(0, 0%, 75%);
   --title: hsl(0, 56%, 60%);
-  --btnback: hsl(0, 0%, 98%);
-  --btndeactback: hsl(0, 0%, 82%);
+  --btnback: hsl(0, 0%, 85%);
+  --btndeactback: hsl(0, 0%, 75%);
   --btndeactborder: hsl(0, 0%, 60%);
   --btnhoverback: hsl(0, 0%, 92%);
   --btnhoverborder: hsl(0, 0%, 65%);
@@ -16,4 +16,6 @@ body.light {
   --orange: hsl(34, 93%, 61%);
   --blue: hsl(192, 82%, 64%);
   --green: hsl(88, 52%, 55%);
+  --lightmode: var(--btndeactback);
+  --darkmode: var(--btnback);
 }

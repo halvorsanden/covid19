@@ -16,4 +16,6 @@ body {
   --orange: hsl(34, 42%, 52%);
   --blue: hsl(192, 41%, 40%);
   --green: hsl(88, 32%, 41%);
+  --lightmode: var(--btndback);
+  --darkmode: var(--btndeactback);
 }

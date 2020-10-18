@@ -138,3 +138,44 @@ footer a:focus {
 .devlogo:active {
   color: var(--text);
 }
+
+.modeswitch {
+  margin-left: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 0;
+}
+
+.modeswitch__mode {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 0.25rem 0.5rem 0.15rem;
+}
+
+.modescreen {
+  height: 0.9rem;
+  width: 1.6rem;
+  border-radius: 2px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.darkmode {
+  border-right: 1px solid var(--border);
+  background-color: var(--darkmode);
+}
+
+.lightmode {
+  background-color: var(--lightmode);
+}
+
+.darkmode .modescreen {
+  background-color: hsl(0, 0%, 10%);
+  border-color: hsl(0, 0%, 95%);
+}
+
+.lightmode .modescreen {
+  background-color: hsl(0, 0%, 95%);
+  border-color: hsl(0, 0%, 10%);
+}

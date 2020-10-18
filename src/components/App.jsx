@@ -5,6 +5,7 @@ import { NovelCovid } from 'novelcovid'
 import Loading from './uicomponents/Loading.jsx'
 import BtnDeact from './uicomponents/BtnDeact.jsx'
 import monthsAbbr from '../helpers/months.js'
+import ModeSwitch from './uicomponents/ModeSwitch.jsx'
 const Countries = lazy(() => import('./Countries.jsx'))
 const Country = lazy(() => import('./Country.jsx'))
 
@@ -40,10 +41,6 @@ function formatDate(updateMs) {
 
 let url = new URL(window.location.href)
 let hash = url.hash
-
-function darkLight() {
-  document.body.classList.toggle('light')
-}
 
 const App = () => {
   const [show, setShow] = useState({
@@ -170,7 +167,7 @@ const App = () => {
               </div>
             )
           : null}
-        <button onClick={darkLight}>Mode</button>
+        <ModeSwitch />
       </header>
       <main>
         {!isLoadingW && !errorW && !isLoadingC && !errorC ? (
