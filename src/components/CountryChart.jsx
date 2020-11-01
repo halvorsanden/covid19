@@ -91,25 +91,25 @@ const CountryChart = ({ historical: { timeline } }) => {
           </div>
           <div className="country-chart">
             <div className="linewrapper">
+              <div className="chart-line-lin">48 000</div>
+              <div className="chart-line-lin">44 000</div>
+              <div className="chart-line-lin">40 000</div>
+              <div className="chart-line-lin">34 000</div>
+              <div className="chart-line-lin">32 000</div>
+              <div className="chart-line-lin">28 000</div>
               <div className="chart-line-lin">24 000</div>
-              <div className="chart-line-lin">22 000</div>
               <div className="chart-line-lin">20 000</div>
-              <div className="chart-line-lin">18 000</div>
               <div className="chart-line-lin">16 000</div>
-              <div className="chart-line-lin">14 000</div>
               <div className="chart-line-lin">12 000</div>
-              <div className="chart-line-lin">10 000</div>
               <div className="chart-line-lin">8 000</div>
-              <div className="chart-line-lin">6 000</div>
               <div className="chart-line-lin">4 000</div>
-              <div className="chart-line-lin">2 000</div>
             </div>
             <div className="barwrapper">
               {tlCasesValue.map((caseValue, i) => (
                 <div
                   key={i}
                   className="case-bar"
-                  style={{ height: `calc(0.004175% * ${caseValue})` }}
+                  style={{ height: `calc(0.0020875% * ${caseValue})` }}
                 >
                   {formatNum(caseValue)}
                 </div>
