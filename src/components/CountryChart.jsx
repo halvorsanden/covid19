@@ -32,15 +32,14 @@ function logHeight(caseInt) {
 }
 
 function tenDayDiff(casesValue, lastDay) {
-  const diff = formatNum(
+  const diff =
     casesValue[lastDay] -
-      casesValue[lastDay - 9] -
-      (casesValue[lastDay - 10] - casesValue[lastDay - 19])
-  )
+    casesValue[lastDay - 9] -
+    (casesValue[lastDay - 10] - casesValue[lastDay - 19])
   if (diff > 0) {
-    return diff + ' more than previous ten days'
+    return formatNum(diff) + ' more than previous ten days'
   } else if (diff < 0) {
-    return -diff + ' fewer than previous ten days'
+    return formatNum(-diff) + ' fewer than previous ten days'
   } else {
     return 'Same increase as the previous ten days'
   }
