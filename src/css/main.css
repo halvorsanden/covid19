@@ -132,6 +132,8 @@ footer a:focus {
 .devlogo:link,
 .devlogo:visited {
   color: hsl(0, 0%, 40%);
+  fill: currentColor;
+  width: 1.4rem;
 }
 
 .devlogo:hover,
