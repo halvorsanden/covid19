@@ -111,15 +111,14 @@ const CountryChart = ({ historical: { timeline } }) => {
                   className="case-bar"
                   style={{ height: `calc(0.0020875% * ${caseValue})` }}
                 >
-                  {formatNum(caseValue)}
+                  <div>{formatNum(caseValue)}</div>
+                  <time
+                    dateTime={dateTime(tlCasesKeys[i])}
+                    className="case-key"
+                  >
+                    {dateFormat(tlCasesKeys[i])}
+                  </time>
                 </div>
-              ))}
-            </div>
-            <div className="keys">
-              {tlCasesKeys.map((date, i) => (
-                <time key={i} dateTime={dateTime(date)} className="case-key">
-                  {dateFormat(date)}
-                </time>
               ))}
             </div>
           </div>
@@ -160,17 +159,16 @@ const CountryChart = ({ historical: { timeline } }) => {
                         height: logHeight(caseValue)
                       }}
                     >
-                      {formatNum(caseValue)}
+                      <div>{formatNum(caseValue)}</div>
+                      <time
+                        dateTime={dateTime(tlCasesKeys[i])}
+                        className="case-key"
+                      >
+                        {dateFormat(tlCasesKeys[i])}
+                      </time>
                     </div>
                   )}
                 </Fragment>
-              ))}
-            </div>
-            <div className="keys">
-              {tlCasesKeys.map((date, i) => (
-                <time key={i} dateTime={dateTime(date)} className="case-key">
-                  {dateFormat(date)}
-                </time>
               ))}
             </div>
           </div>
