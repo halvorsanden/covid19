@@ -137,36 +137,41 @@ const App = () => {
   return (
     <>
       <header>
-        <h1>
-          COVID-19 <span>status</span>
-        </h1>
-        <nav>
-          {!show.selected ? (
-            <button onClick={activateSelected}>Selected countries</button>
-          ) : (
-            <BtnDeact text="Selected countries" />
-          )}
-          {!show.all ? (
-            <button onClick={activateAll}>All countries</button>
-          ) : (
-            <BtnDeact text="All countries" />
-          )}
-          {!show.country ? (
-            <button onClick={activateCountry}>Norway</button>
-          ) : (
-            <BtnDeact text="Norway" />
-          )}
-        </nav>
-        {!isLoadingW && !errorW
-          ? world.updated && (
-              <div className="updated">
-                Data updated{' '}
-                <time dateTime={dateTime(world.updated)}>
-                  {formatDate(world.updated)}
-                </time>
-              </div>
-            )
-          : null}
+        <div>
+          <h1>
+            COVID-19 <span>status</span>
+          </h1>
+          <div className="menuwrap">
+            <nav>
+              {!show.selected ? (
+                <button onClick={activateSelected}>Selected countries</button>
+              ) : (
+                <BtnDeact text="Selected countries" />
+              )}
+              {!show.all ? (
+                <button onClick={activateAll}>All countries</button>
+              ) : (
+                <BtnDeact text="All countries" />
+              )}
+              {!show.country ? (
+                <button onClick={activateCountry}>Norway</button>
+              ) : (
+                <BtnDeact text="Norway" />
+              )}
+            </nav>
+
+            {!isLoadingW && !errorW
+              ? world.updated && (
+                  <div className="updated">
+                    Data updated{' '}
+                    <time dateTime={dateTime(world.updated)}>
+                      {formatDate(world.updated)}
+                    </time>
+                  </div>
+                )
+              : null}
+          </div>
+        </div>
         <ModeSwitch />
       </header>
       <main>
