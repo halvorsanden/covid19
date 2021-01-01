@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState, Fragment } from 'react'
-import monthsAbbr from '../helpers/months.js'
-import { formatNum } from '../helpers/numberfuncs.js'
+import monthsAbbr from '../helpers/months'
+import { formatNum } from '../helpers/numberfuncs'
 
 function dateFormat(datestring) {
   const parts = datestring.match(/(\d{1,2})\/(\d{1,2})\/(\d{2})/)

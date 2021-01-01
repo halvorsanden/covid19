@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 import { NovelCovid } from 'novelcovid'
-import Loading from './uicomponents/Loading.jsx'
-import CountryStats from './CountryStats.jsx'
-import CountryChart from './CountryChart.jsx'
+import Loading from './uicomponents/Loading'
+import CountryStats from './CountryStats'
+import CountryChart from './CountryChart'
 
 // Experimental, can probably be changed to input at some time to feature other countries
 

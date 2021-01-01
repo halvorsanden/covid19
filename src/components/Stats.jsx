@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { formatNum, round } from '../helpers/numberfuncs.js'
+import { formatNum, round } from '../helpers/numberfuncs'
 
 const Stats = ({
   country,

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
-import Stats from './Stats.jsx'
-import World from './World.jsx'
+import Stats from './Stats'
+import World from './World'
 
 const Countries = ({ showAll, world, people, countries, loadingP, errorP }) => {
   const [showState, setShowState] = useState(showAll)

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { round } from '../helpers/numberfuncs.js'
+import { round } from '../helpers/numberfuncs'
 
 const WorldPercentage = (props) => {
   const {

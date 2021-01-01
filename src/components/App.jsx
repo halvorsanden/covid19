@@ -2,12 +2,12 @@ import * as React from 'react'
 import { useState, useEffect, Suspense, lazy } from 'react'
 import 'regenerator-runtime/runtime'
 import { NovelCovid } from 'novelcovid'
-import Loading from './uicomponents/Loading.jsx'
-import BtnDeact from './uicomponents/BtnDeact.jsx'
-import monthsAbbr from '../helpers/months.js'
-import ModeSwitch from './uicomponents/ModeSwitch.jsx'
-const Countries = lazy(() => import('./Countries.jsx'))
-const Country = lazy(() => import('./Country.jsx'))
+import Loading from './uicomponents/Loading'
+import BtnDeact from './uicomponents/BtnDeact'
+import monthsAbbr from '../helpers/months'
+import ModeSwitch from './uicomponents/ModeSwitch'
+const Countries = lazy(() => import('./Countries'))
+const Country = lazy(() => import('./Country'))
 
 const APIEndpoint = new NovelCovid()
 const endpointPeople =

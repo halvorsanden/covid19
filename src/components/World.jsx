@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Suspense, lazy } from 'react'
-import { formatNum, round } from '../helpers/numberfuncs.js'
-const WorldPercentage = lazy(() => import('./WorldPercentage.jsx'))
+import { formatNum, round } from '../helpers/numberfuncs'
+const WorldPercentage = lazy(() => import('./WorldPercentage'))
 
 const World = ({ world, people, loadingP, errorP }) => {
   const { cases, deaths, recovered } = world

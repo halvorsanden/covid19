@@ -1,5 +1,4 @@
 const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -19,10 +18,11 @@ module.exports = {
   module: {
     rules: [
       {
+        resolve: { extensions: ['.js', '.jsx'] },
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        query: {
+        options: {
           presets: ['@babel/preset-env', '@babel/preset-react'],
           plugins: ['@babel/plugin-proposal-class-properties']
         }
@@ -30,30 +30,21 @@ module.exports = {
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
+        use: ['style-loader', 'css-loader', 'postcss-loader']
       }
     ]
   },
 
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'bundle.css'
-    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html',
       title: 'COVID-19 status',
-      files: {
-        css: 'bundle.css',
-        js: 'bundle.js'
-      },
       appMountId: 'main',
       themeColour: '#212121',
       lang: 'en',
       minify: true,
-      hash: true,
-      inject: false
+      hash: true
     })
   ]
 }
