@@ -22,7 +22,7 @@ const Countries = ({ showAll, world, people, countries, loadingP, errorP }) => {
             {country.country === 'Italy' ? <Stats {...country} /> : null}
             {country.country === 'USA' ? <Stats {...country} /> : null}
             {country.country === 'Spain' ? <Stats {...country} /> : null}
-            {country.country === 'France' ? <Stats {...country} /> : null}
+            {country.country === 'New Zealand' ? <Stats {...country} /> : null}
             {country.country === 'UK' ? <Stats {...country} /> : null}
           </React.Fragment>
         ))}
