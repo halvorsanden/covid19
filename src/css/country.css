@@ -5,12 +5,12 @@ table {
 }
 
 thead tr {
-  border-bottom: 1px solid hsl(0, 0%, 65%);
+  border-bottom: 1px solid hsla(0, 0%, 50%, 0.7);
 }
 
 tr {
   text-align: right;
-  border-bottom: 1px solid hsl(0, 0%, 85%);
+  border-bottom: 1px solid hsla(0, 0%, 50%, 0.2);
 }
 
 th {
@@ -23,7 +23,7 @@ td {
   white-space: nowrap;
 }
 
-@media (max-width: 69em) {
+@media (max-width: 72em) {
   .table-view {
     display: none;
   }
@@ -33,20 +33,24 @@ td {
   display: flex;
   flex-flow: row wrap;
   margin-top: 1rem;
+  column-gap: 5vw;
+}
+
+.dl-view div {
+  max-width: 14rem;
+  flex: 1 1 11rem;
+  margin-bottom: 2rem;
 }
 
 .dl-view dl {
   display: flex;
   flex-flow: row wrap;
-  max-width: 11rem;
-  margin-bottom: 2rem;
-  margin-right: 4rem;
 }
 
 .dl-view dt,
 .dl-view dd {
   flex: 1 1 50%;
-  border-bottom: 1px solid hsl(0, 0%, 85%);
+  border-bottom: 1px solid hsla(0, 0%, 50%, 0.3);
   padding-top: 0.2em;
   padding-bottom: 0.1em;
 }
@@ -55,7 +59,7 @@ td {
   text-align: right;
 }
 
-@media (min-width: 69em) {
+@media (min-width: 72em) {
   .dl-view {
     display: none;
   }
@@ -84,7 +88,7 @@ td {
   min-height: 26rem;
   font-size: 0.83rem;
   font-weight: 600;
-  color: hsl(0, 0%, 40%);
+  color: hsla(0, 0%, 45%, 0.9);
 }
 
 .chart-line-log {
@@ -132,4 +136,6 @@ td {
 .tenday {
   margin-bottom: 1rem;
   list-style: none;
+  font-size: 90%;
+  color: var(--htext);
 }
