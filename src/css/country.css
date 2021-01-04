@@ -1,3 +1,21 @@
+.country {
+  flex: 1 0 100%;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.thirtyday {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.tenday {
+  margin-bottom: 1rem;
+  list-style: none;
+  font-size: 90%;
+  color: var(--htext);
+}
+
 table {
   margin-top: 2vh;
   margin-bottom: 4vh;
@@ -65,11 +83,6 @@ td {
   }
 }
 
-.country {
-  flex: 1 0 100%;
-  margin-right: 1rem;
-}
-
 .country-chart {
   display: grid;
   grid-template-areas: 'values';
@@ -131,11 +144,4 @@ td {
 
 .case-key {
   white-space: nowrap;
-}
-
-.tenday {
-  margin-bottom: 1rem;
-  list-style: none;
-  font-size: 90%;
-  color: var(--htext);
 }

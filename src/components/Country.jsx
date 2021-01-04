@@ -4,6 +4,7 @@ import { NovelCovid } from 'novelcovid'
 import Loading from './uicomponents/Loading'
 import CountryStats from './CountryStats'
 import CountryChart from './CountryChart'
+import CountrySummary from './CountrySummary'
 
 // Experimental, can probably be changed to input at some time to feature other countries
 
@@ -71,6 +72,19 @@ const Country = () => {
     fetchHistorical()
   }, [])
 
+  let tlCasesValue = []
+  let tlCasesKeys = []
+
+  if (!isLoadingH && !errorH) {
+    const timeline = historical.timeline
+    Object.keys(timeline.cases).forEach(
+      (key) => timeline.cases[key] > 0 && tlCasesValue.push(timeline.cases[key])
+    )
+    Object.keys(timeline.cases).forEach(
+      (key) => timeline.cases[key] > 0 && tlCasesKeys.push(key)
+    )
+  }
+
   return !isLoadingC &&
     !errorC &&
     !isLoadingY &&
@@ -79,8 +93,9 @@ const Country = () => {
     !errorH ? (
     <>
       <h2>{current.country}</h2>
+      <CountrySummary tlCasesValue={tlCasesValue} />
       <CountryStats c={current} y={yesterday} />
-      <CountryChart historical={historical} />
+      <CountryChart tlCasesValue={tlCasesValue} tlCasesKeys={tlCasesKeys} />
     </>
   ) : (
     <Loading />

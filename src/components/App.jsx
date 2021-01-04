@@ -212,7 +212,7 @@ const App = () => {
           </a>
         </p>
         <a
-          class="devlogo"
+          className="devlogo"
           title="Developed by H.W. Sanden"
           href="http://8yd.no"
         >
