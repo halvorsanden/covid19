@@ -3,16 +3,17 @@ import { useState, Fragment } from 'react'
 import monthsAbbr from '../helpers/months'
 import { formatNum } from '../helpers/numberfuncs'
 
-function dateFormat(datestring) {
+function dateFormat(datestring, i) {
   const parts = datestring.match(/(\d{1,2})\/(\d{1,2})\/(\d{2})/)
   const monthIndex = parts[1] - 1
   const month = monthsAbbr[monthIndex]
   const dateday = parts[2]
-  if (dateday == 1) {
+  if (i == 0) {
     return `${dateday}. ${month}`
-  } else {
-    return dateday
+  } else if (dateday == 1) {
+    return `${dateday}. ${month}`
   }
+  return dateday
 }
 
 function dateTime(datestring) {
@@ -40,9 +41,8 @@ function tenDayDiff(casesValue, lastDay) {
     return formatNum(diff) + ' more than previous ten days'
   } else if (diff < 0) {
     return formatNum(-diff) + ' fewer than previous ten days'
-  } else {
-    return 'Same increase as the previous ten days'
   }
+  return 'Same increase as the previous ten days'
 }
 
 const CountryChart = ({ historical: { timeline } }) => {
@@ -116,7 +116,7 @@ const CountryChart = ({ historical: { timeline } }) => {
                     dateTime={dateTime(tlCasesKeys[i])}
                     className="case-key"
                   >
-                    {dateFormat(tlCasesKeys[i])}
+                    {dateFormat(tlCasesKeys[i], i)}
                   </time>
                 </div>
               ))}
