@@ -9,9 +9,9 @@ function dateFormat(datestring, i) {
   const month = monthsAbbr[monthIndex]
   const dateday = parts[2]
   if (i == 0) {
-    return `${dateday}. ${month}`
+    return `${month} ${dateday}`
   } else if (dateday == 1) {
-    return `${dateday}. ${month}`
+    return `${month} ${dateday}`
   }
   return dateday
 }
