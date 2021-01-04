@@ -1,6 +1,6 @@
 {
   "name": "covid19",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "description": "COVID19 status",
   "repository": {
     "type": "git",
@@ -8,9 +8,9 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --mode development",
-    "build": "webpack --mode production",
-    "release": "webpack --mode production && npm --no-git-tag-version version patch"
+    "start": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "release": "rmdir dist /s /q && npm run build && npm --no-git-tag-version version patch"
   },
   "author": "Halvor William Sanden",
   "license": "ISC",

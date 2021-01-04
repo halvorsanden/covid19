@@ -1,26 +1,22 @@
-const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   target: 'web',
-  entry: './src/index',
-  output: {
-    path: path.join(__dirname, './www'),
-    filename: 'bundle.js',
-    chunkFilename: 'chunk[id].js'
-  },
+
+  mode: 'development',
 
   devtool: 'source-map',
 
-  devServer: {
-    contentBase: './www'
+  entry: './src/index',
+
+  resolve: {
+    extensions: ['.js', '.jsx']
   },
 
   module: {
     rules: [
       {
-        resolve: { extensions: ['.js', '.jsx'] },
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
@@ -29,7 +25,6 @@ module.exports = {
           plugins: ['@babel/plugin-proposal-class-properties']
         }
       },
-      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader', 'postcss-loader']
@@ -49,5 +44,6 @@ module.exports = {
       minify: true,
       hash: true
     })
-  ]
+  ],
+
 }
