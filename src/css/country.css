@@ -56,7 +56,7 @@ td {
 
 .dl-view div {
   max-width: 14rem;
-  flex: 1 1 11rem;
+  flex: 1 1 10rem;
   margin-bottom: 2rem;
 }
 
@@ -97,7 +97,7 @@ td {
   flex-flow: column nowrap;
   justify-content: stretch;
   width: 99%;
-  height: 48vh;
+  height: 64vh;
   min-height: 26rem;
   font-size: 0.83rem;
   font-weight: 600;
@@ -117,7 +117,7 @@ td {
 .barwrapper {
   overflow-x: auto;
   grid-area: values;
-  height: 48vh;
+  height: 64vh;
   min-height: 26rem;
   display: flex;
   flex-flow: row nowrap;

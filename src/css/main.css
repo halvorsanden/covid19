@@ -107,7 +107,7 @@ button:hover {
 }
 
 main {
-  margin: 2rem calc(6vw - 1rem) 2rem 6vw;
+  margin: 2rem 4vw 2rem 4vw;
   display: flex;
   flex-flow: row wrap;
 }
