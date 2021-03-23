@@ -124,7 +124,7 @@ const CountryChart = ({ tlCasesValue, tlCasesKeys }) => {
                         dateTime={dateTime(tlCasesKeys[i])}
                         className="case-key"
                       >
-                        {dateFormat(tlCasesKeys[i])}
+                        {dateFormat(tlCasesKeys[i], i)}
                       </time>
                     </div>
                   )}
