@@ -1,5 +1,18 @@
 import * as React from 'react'
 import { formatNum, round } from '../helpers/numberfuncs'
+import monthsAbbr from '../helpers/months'
+
+function formatDate(epochDate, yesterday) {
+  let update = new Date(epochDate)
+  if (yesterday == 'yesterday') {
+    update.setDate(update.getDate() - 1)
+  }
+  const day = update.getDate()
+  const monthIndex = update.getMonth()
+  const month = monthsAbbr[monthIndex]
+  const updateReadable = `${month} ${day}`
+  return updateReadable
+}
 
 const CountryStats = ({ c, y }) => {
   return (
@@ -24,7 +37,7 @@ const CountryStats = ({ c, y }) => {
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Today</th>
+            <th scope="row">{formatDate(c.updated, 'today')}</th>
             <td>{formatNum(c.active)}</td>
             <td>{c.todayCases > 0 ? formatNum(c.todayCases) : '-'}</td>
             <td className="ws-nowrap">
@@ -47,7 +60,7 @@ const CountryStats = ({ c, y }) => {
             <td>{c.tests > 0 && formatNum(c.tests)}</td>
           </tr>
           <tr>
-            <th scope="row">Yesterday</th>
+            <th scope="row">{formatDate(c.updated, 'yesterday')}</th>
             <td>{formatNum(y.active)}</td>
             <td>{y.todayCases > 0 ? formatNum(y.todayCases) : '-'}</td>
             <td className="ws-nowrap">
@@ -74,7 +87,7 @@ const CountryStats = ({ c, y }) => {
 
       <div className="dl-view">
         <div>
-          <h3>Today</h3>
+          <h3>{formatDate(c.updated, 'today')}</h3>
           <dl>
             <dt>Active</dt>
             <dd>{formatNum(c.active)}</dd>
@@ -111,7 +124,7 @@ const CountryStats = ({ c, y }) => {
           </dl>
         </div>
         <div>
-          <h3>Yesterday</h3>
+          <h3>{formatDate(c.updated, 'yesterday')}</h3>
           <dl>
             <dt>Active</dt>
             <dd>{formatNum(y.active)}</dd>
