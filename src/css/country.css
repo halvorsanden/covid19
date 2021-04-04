@@ -50,6 +50,7 @@ td {
 .dl-view {
   display: flex;
   flex-flow: row-reverse wrap;
+  justify-content: flex-end;
   margin-top: 1rem;
   column-gap: 5vw;
 }
