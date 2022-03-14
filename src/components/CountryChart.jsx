@@ -28,11 +28,38 @@ function dateTime(datestring) {
   return `${year}-${months}-${dateDays}`
 }
 
+const LineWrapper = ({ maxY }) => {
+  const stepSize = maxY / 12
+
+  let stepArr = []
+  stepArr[0] = maxY
+  let newStep = maxY
+
+  for (let step = 1; step < 12; step++) {
+    stepArr[step] = Math.round(newStep - stepSize)
+    newStep = newStep - stepSize
+  }
+
+  return (
+    <div className="linewrapper">
+      {stepArr.map((stepLine, i) => (
+        <div key={i + stepLine} className="chart-line-lin">
+          {formatNum(stepLine)}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+// 100 divide by max y to find the percentage to multiply with case value to get the height
+
 function logHeight(caseInt) {
   return (100 * Math.log(caseInt)) / Math.log(200000) + '%'
 }
 
 const CountryChart = ({ tlCasesValue, tlCasesKeys }) => {
+  const maxY = Math.ceil(tlCasesValue[0] / 1000000) * 1000000
+  const stepFactor = 100 / maxY
   const [showLog, setShowLog] = useState(false)
   function hideLine() {
     setShowLog(true)
@@ -50,26 +77,13 @@ const CountryChart = ({ tlCasesValue, tlCasesKeys }) => {
             <button onClick={hideLine}>Logarithmic</button>
           </div>
           <div className="country-chart">
-            <div className="linewrapper">
-              <div className="chart-line-lin">200 000</div>
-              <div className="chart-line-lin">183 333</div>
-              <div className="chart-line-lin">166 666</div>
-              <div className="chart-line-lin">150 000</div>
-              <div className="chart-line-lin">133 333</div>
-              <div className="chart-line-lin">116 666</div>
-              <div className="chart-line-lin">100 000</div>
-              <div className="chart-line-lin">83 333</div>
-              <div className="chart-line-lin">66 666</div>
-              <div className="chart-line-lin">50 000</div>
-              <div className="chart-line-lin">33 333</div>
-              <div className="chart-line-lin">16 666</div>
-            </div>
+            <LineWrapper maxY={maxY} />
             <div className="barwrapper">
               {tlCasesValue.map((caseValue, i) => (
                 <div
                   key={i}
                   className="case-bar"
-                  style={{ height: `calc(0.0005% * ${caseValue})` }}
+                  style={{ height: `calc(${stepFactor}% * ${caseValue})` }}
                 >
                   <div>{formatNum(caseValue)}</div>
                   <time
