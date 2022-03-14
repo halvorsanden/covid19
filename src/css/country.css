@@ -22,13 +22,13 @@ table {
   border-collapse: collapse;
 }
 
-thead tr {
-  border-bottom: 1px solid hsla(0, 0%, 50%, 0.7);
-}
-
 tr {
   text-align: right;
   border-bottom: 1px solid hsla(0, 0%, 50%, 0.2);
+}
+
+thead tr {
+  border-bottom: 1px solid hsla(0, 0%, 50%, 0.7);
 }
 
 th {

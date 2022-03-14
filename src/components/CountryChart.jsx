@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState, Fragment } from 'react'
+import { useState } from 'react'
 import monthsAbbr from '../helpers/months'
 import { formatNum } from '../helpers/numberfuncs'
 
@@ -93,12 +93,12 @@ const CountryChart = ({ tlCasesValue, tlCasesKeys }) => {
   const maxY = Math.ceil(tlCasesValue[0] / 1000000) * 1000000
   const stepFactor = 100 / maxY
   const [showLog, setShowLog] = useState(false)
-  function hideLine() {
-    setShowLog(true)
-  }
-  function hideLog() {
-    setShowLog(false)
-  }
+  // function hideLine() {
+  //   setShowLog(true)
+  // }
+  // function hideLog() {
+  //   setShowLog(false)
+  // }
 
   return (
     <section className="country">

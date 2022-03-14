@@ -46,7 +46,7 @@ h1 span {
 
 h2 {
   font-size: calc(1.1rem + 0.5vmin);
-  margin-bottom: 0.1em;
+  margin-bottom: 0.4em;
   color: var(--htext);
 }
 
