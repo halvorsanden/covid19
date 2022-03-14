@@ -4,17 +4,13 @@ import { formatNum, round } from '../helpers/numberfuncs'
 const WorldPercentage = lazy(() => import('./WorldPercentage'))
 
 const World = ({ world, people, loadingP, errorP }) => {
-  const { cases, deaths, recovered } = world
+  const { cases, deaths } = world
 
   return (
     <>
       <section className="statcard">
         <h2>Worldwide</h2>
         <dl>
-          <div className="active">
-            <dt>Active cases</dt>
-            <dd>{cases && formatNum(cases - deaths - recovered)}</dd>
-          </div>
           {cases > 0 && (
             <div className="cases cases__total">
               <dt>Total</dt>
@@ -31,12 +27,6 @@ const World = ({ world, people, loadingP, errorP }) => {
                 <dt>Deadliness</dt>
                 <dd>{round((deaths / cases) * 100, 4)} %</dd>
               </div>
-            </div>
-          )}
-          {world.recovered > 0 && (
-            <div className="rnt rnt__recovered">
-              <dt>Recovered</dt>
-              <dd>{formatNum(recovered)}</dd>
             </div>
           )}
         </dl>

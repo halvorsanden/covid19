@@ -4,9 +4,7 @@ import { formatNum, round } from '../helpers/numberfuncs'
 const Stats = ({
   country,
   cases,
-  active,
   deaths,
-  recovered,
   todayCases,
   critical,
   todayDeaths,
@@ -17,14 +15,6 @@ const Stats = ({
   <section className="statcard">
     <h2>{country}</h2>
     <dl>
-      <div className="active">
-        {active != 1 ? (
-          <dt>Active cases{recovered < 1 && '? 🤷‍♂️'}</dt>
-        ) : (
-          <dt>Active case</dt>
-        )}
-        <dd>{formatNum(active)}</dd>
-      </div>
       <div className="cases">
         {todayCases > 0 && (
           <div className="cases__new">
@@ -79,34 +69,6 @@ const Stats = ({
           )}
         </div>
       )}
-      {recovered > 0 &&
-        (recovered === cases ? (
-          <div className="rnt--all">
-            <div className="rnt__recovered">
-              <dt>Recovered</dt>
-              <dd>{formatNum(recovered)}</dd>
-            </div>
-            {tests > 0 && (
-              <div className="rnt__tests">
-                <dt>Tests</dt>
-                <dd>{formatNum(tests)}</dd>
-              </div>
-            )}
-          </div>
-        ) : (
-          <div className="rnt">
-            <div className="rnt__recovered">
-              <dt>Recovered</dt>
-              <dd>{formatNum(recovered)}</dd>
-            </div>
-            {tests > 0 && (
-              <div className="rnt__tests">
-                <dt>Tests</dt>
-                <dd>{formatNum(tests)}</dd>
-              </div>
-            )}
-          </div>
-        ))}
     </dl>
   </section>
 )

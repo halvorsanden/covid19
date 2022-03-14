@@ -14,14 +14,12 @@ dt {
 .cnd__dead,
 .cnd__died,
 .cnd__deadly,
-.rnt__recovered,
 .rnt__tests {
   display: flex;
   flex-flow: row wrap;
   align-items: baseline;
 }
 
-.active,
 .cases,
 .cnd {
   padding-bottom: 0.1rem;
@@ -46,34 +44,6 @@ dt {
 .rnt--all {
   border-left: 3px solid var(--green);
   padding-left: 0.4em;
-}
-
-.active {
-  display: flex;
-  flex-flow: column nowrap;
-}
-
-.active dd {
-  order: 1;
-  font-size: calc(1.8rem + 1vmin);
-  font-weight: 900;
-  line-height: 1;
-}
-
-.active dt span {
-  font-size: 0.8em;
-  font-weight: 400;
-}
-
-.active.percent dd {
-  font-size: calc(1rem + 1vmin);
-}
-
-.active dt {
-  order: 2;
-  text-transform: lowercase;
-  line-height: 1;
-  margin-bottom: 0.3em;
 }
 
 .cases dt,

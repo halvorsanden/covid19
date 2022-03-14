@@ -20,8 +20,9 @@ const CountryStats = ({ c, y }) => {
       <table className="table-view">
         <thead>
           <tr>
-            <th></th>
-            <th>Active</th>
+            <th>
+              <span hidden>Date</span>
+            </th>
             <th>New</th>
             <th>Increase</th>
             <th>Total</th>
@@ -31,14 +32,12 @@ const CountryStats = ({ c, y }) => {
             <th>Dead</th>
             <th>Dead/M</th>
             <th>Deadliness</th>
-            <th>Recovered</th>
             <th>Tests</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">{formatDate(c.updated, 'today')}</th>
-            <td>{formatNum(c.active)}</td>
             <td>{c.todayCases > 0 ? formatNum(c.todayCases) : '-'}</td>
             <td className="ws-nowrap">
               {c.todayCases > 0
@@ -56,12 +55,10 @@ const CountryStats = ({ c, y }) => {
             <td className="ws-nowrap">
               {c.deaths > 0 && round((c.deaths / c.cases) * 100, 4) + ' %'}
             </td>
-            <td>{c.recovered > 0 && formatNum(c.recovered)}</td>
             <td>{c.tests > 0 && formatNum(c.tests)}</td>
           </tr>
           <tr>
             <th scope="row">{formatDate(c.updated, 'yesterday')}</th>
-            <td>{formatNum(y.active)}</td>
             <td>{y.todayCases > 0 ? formatNum(y.todayCases) : '-'}</td>
             <td className="ws-nowrap">
               {y.todayCases > 0
@@ -79,7 +76,6 @@ const CountryStats = ({ c, y }) => {
             <td className="ws-nowrap">
               {y.deaths > 0 && round((y.deaths / y.cases) * 100, 4) + ' %'}
             </td>
-            <td>{y.recovered > 0 && formatNum(y.recovered)}</td>
             <td>{y.tests > 0 && formatNum(y.tests)}</td>
           </tr>
         </tbody>
@@ -89,8 +85,6 @@ const CountryStats = ({ c, y }) => {
         <div>
           <h3>{formatDate(c.updated, 'today')}</h3>
           <dl>
-            <dt>Active</dt>
-            <dd>{formatNum(c.active)}</dd>
             <dt>New</dt>
             <dd>{c.todayCases > 0 ? formatNum(c.todayCases) : '-'}</dd>
             <dt>Increase</dt>
@@ -117,8 +111,6 @@ const CountryStats = ({ c, y }) => {
             <dd className="ws-nowrap">
               {c.deaths > 0 && round((c.deaths / c.cases) * 100, 4) + ' %'}
             </dd>
-            <dt>Recovered</dt>
-            <dd>{c.recovered > 0 && formatNum(c.recovered)}</dd>
             <dt>Tests</dt>
             <dd>{c.tests > 0 && formatNum(c.tests)}</dd>
           </dl>
@@ -126,8 +118,6 @@ const CountryStats = ({ c, y }) => {
         <div>
           <h3>{formatDate(c.updated, 'yesterday')}</h3>
           <dl>
-            <dt>Active</dt>
-            <dd>{formatNum(y.active)}</dd>
             <dt>New</dt>
             <dd>{y.todayCases > 0 ? formatNum(y.todayCases) : '-'}</dd>
             <dt>Increase</dt>
@@ -154,8 +144,6 @@ const CountryStats = ({ c, y }) => {
             <dd className="ws-nowrap">
               {y.deaths > 0 && round((y.deaths / y.cases) * 100, 4) + ' %'}
             </dd>
-            <dt>Recovered</dt>
-            <dd>{y.recovered > 0 && formatNum(y.recovered)}</dd>
             <dt>Tests</dt>
             <dd>{y.tests > 0 && formatNum(y.tests)}</dd>
           </dl>
