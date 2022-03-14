@@ -28,14 +28,16 @@ function dateTime(datestring) {
   return `${year}-${months}-${dateDays}`
 }
 
-const LineWrapper = ({ maxY }) => {
-  const stepSize = maxY / 12
+const LinLines = ({ maxY }) => {
+  const stepFactor = 12
+  const stepSize = maxY / stepFactor
+  const stepFlex = 100 / stepFactor
 
   let stepArr = []
   stepArr[0] = maxY
   let newStep = maxY
 
-  for (let step = 1; step < 12; step++) {
+  for (let step = 1; step < stepFactor; step++) {
     stepArr[step] = Math.round(newStep - stepSize)
     newStep = newStep - stepSize
   }
@@ -43,7 +45,11 @@ const LineWrapper = ({ maxY }) => {
   return (
     <div className="linewrapper">
       {stepArr.map((stepLine, i) => (
-        <div key={i + stepLine} className="chart-line-lin">
+        <div
+          key={i + stepLine}
+          className="chart-line-lin"
+          style={{ flex: `0 0 ${stepFlex}%` }}
+        >
           {formatNum(stepLine)}
         </div>
       ))}
@@ -51,11 +57,37 @@ const LineWrapper = ({ maxY }) => {
   )
 }
 
-// 100 divide by max y to find the percentage to multiply with case value to get the height
+// const LogLines = ({ maxY }) => {
+//   const stepFactor = 10
+//   const stepSize = maxY / stepFactor
 
-function logHeight(caseInt) {
-  return (100 * Math.log(caseInt)) / Math.log(200000) + '%'
-}
+//   let stepArr = []
+//   stepArr[0] = maxY
+//   let newStep = maxY
+
+//   for (let step = 1; step < 10; step++) {
+//     stepArr[step] = Math.round(newStep - stepSize)
+//     newStep = newStep - stepSize
+//   }
+
+//   return (
+//     <div className="linewrapper">
+//       {stepArr.map((stepLine, i) => (
+//         <div
+//           key={i + stepLine}
+//           className="chart-line-log"
+//           style={{ flex: `0 0 ${stepFactor}%` }}
+//         >
+//           {formatNum(stepLine)}
+//         </div>
+//       ))}
+//     </div>
+//   )
+// }
+
+// function logHeight(caseInt) {
+//   return (100 * Math.log(caseInt)) / Math.log(200000) + '%'
+// }
 
 const CountryChart = ({ tlCasesValue, tlCasesKeys }) => {
   const maxY = Math.ceil(tlCasesValue[0] / 1000000) * 1000000
@@ -70,14 +102,15 @@ const CountryChart = ({ tlCasesValue, tlCasesKeys }) => {
 
   return (
     <section className="country">
+      <h3>Total cases</h3>
       {!showLog ? (
         <>
-          <div className="nav">
+          {/* <div className="nav">
             <div className="btndeact">Linear</div>
             <button onClick={hideLine}>Logarithmic</button>
-          </div>
+          </div> */}
           <div className="country-chart">
-            <LineWrapper maxY={maxY} />
+            <LinLines maxY={maxY} />
             <div className="barwrapper">
               {tlCasesValue.map((caseValue, i) => (
                 <div
@@ -99,18 +132,12 @@ const CountryChart = ({ tlCasesValue, tlCasesKeys }) => {
         </>
       ) : (
         <>
-          <div className="nav">
+          {/* <div className="nav">
             <button onClick={hideLog}>Linear</button>
             <div className="btndeact">Logarithmic</div>
           </div>
           <div className="country-chart">
-            <div className="linewrapper">
-              <div className="chart-line-log">200 000</div>
-              <div className="chart-line-log">20 000</div>
-              <div className="chart-line-log">2 000</div>
-              <div className="chart-line-log">200</div>
-              <div className="chart-line-log">20</div>
-            </div>
+            <LogLines maxY={maxY} />
             <div className="barwrapper">
               {tlCasesValue.map((caseValue, i) => (
                 <Fragment key={i}>
@@ -145,7 +172,7 @@ const CountryChart = ({ tlCasesValue, tlCasesKeys }) => {
                 </Fragment>
               ))}
             </div>
-          </div>
+          </div> */}
         </>
       )}
     </section>
