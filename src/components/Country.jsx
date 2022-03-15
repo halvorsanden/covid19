@@ -6,8 +6,6 @@ import CountryStats from './CountryStats'
 import CountryChart from './CountryChart'
 import CountrySummary from './CountrySummary'
 
-// Experimental, can probably be changed to input at some time to feature other countries
-
 const APIEndpoint = new NovelCovid()
 
 const Country = () => {

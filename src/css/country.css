@@ -105,10 +105,6 @@ td {
   color: hsla(0, 0%, 45%, 0.9);
 }
 
-.chart-line-log {
-  border-top: 1px solid hsla(3, 93%, 60%, 0.4);
-}
-
 .chart-line-lin {
   border-top: 1px solid hsla(3, 93%, 60%, 0.4);
 }
