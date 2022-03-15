@@ -4,10 +4,13 @@ module.exports = {
   mode: 'production',
 
   entry: './src/index',
-  
-    resolve: {
-      extensions: ['.js', '.jsx']
-    },
+  output: {
+    filename: '[id].[contenthash].bundle.js'
+  },
+
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
 
   module: {
     rules: [
