@@ -1,3 +1,17 @@
+.country-select {
+  flex: 1 0 100%;
+  margin-bottom: 1rem;
+}
+
+.country-select select {
+  padding: 0.4em;
+  font-size: 1rem;
+  border-radius: 0;
+  border: 1px solid var(--border);
+  background-color: var(--selectback);
+  color: var(--text)
+}
+
 .country {
   flex: 1 0 100%;
   margin-right: 1rem;
@@ -41,7 +55,7 @@ td {
   white-space: nowrap;
 }
 
-@media (max-width: 72em) {
+@media (max-width: 71.99em) {
   .table-view {
     display: none;
   }

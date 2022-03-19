@@ -49,6 +49,7 @@ const App = () => {
     country: false
   })
   const [countries, setCountries] = useState([])
+  const [selectedCountry, setSelectedCountry] = useState('Norway')
   const [isLoadingC, setIsLoadingC] = useState(true)
   const [errorC, setErrorC] = useState(false)
   const [world, setWorld] = useState([])
@@ -57,6 +58,11 @@ const App = () => {
   const [people, setPeople] = useState({})
   const [isLoadingP, setIsLoadingP] = useState(true)
   const [errorP, setErrorP] = useState(false)
+
+  const changeCountry = (e) => {
+    const value = e.target.value
+    setSelectedCountry(value)
+  }
 
   function activateSelected() {
     setShow({ selected: true, all: false, country: false })
@@ -132,7 +138,7 @@ const App = () => {
     fetchWorld()
     fetchCountries()
     getParams(hash)
-  }, [])
+  }, [selectedCountry])
 
   return (
     <>
@@ -154,9 +160,9 @@ const App = () => {
                 <BtnDeact text="All countries" />
               )}
               {!show.country ? (
-                <button onClick={activateCountry}>Norway</button>
+                <button onClick={activateCountry}>Country</button>
               ) : (
-                <BtnDeact text="Norway" />
+                <BtnDeact text="Country" />
               )}
             </nav>
 
@@ -175,6 +181,17 @@ const App = () => {
         <ModeSwitch />
       </header>
       <main>
+        {show.country ? (
+          <div className="country-select">
+            <select value={selectedCountry} onChange={changeCountry}>
+              {countries.map((country, i) => (
+                <option key={i} value={country.country}>
+                  {country.country}
+                </option>
+              ))}
+            </select>
+          </div>
+        ) : null}
         {!isLoadingW && !errorW && !isLoadingC && !errorC ? (
           !show.country ? (
             <Suspense fallback={<Loading />}>
@@ -189,7 +206,7 @@ const App = () => {
             </Suspense>
           ) : (
             <Suspense fallback={<Loading />}>
-              <Country showCountry={show.country} />
+              <Country selectedCountry={selectedCountry} />
             </Suspense>
           )
         ) : (

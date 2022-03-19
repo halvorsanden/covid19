@@ -5,6 +5,7 @@ body.light {
   --headerbackground: hsl(0, 0%, 90%);
   --border: hsl(0, 0%, 75%);
   --title: hsl(0, 56%, 60%);
+  --selectback: hsl(0, 0%, 100%);
   --btnback: hsl(0, 0%, 85%);
   --btndeactback: hsl(0, 0%, 75%);
   --btndeactborder: hsl(0, 0%, 60%);

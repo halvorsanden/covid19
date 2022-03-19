@@ -8,7 +8,7 @@ import CountrySummary from './CountrySummary'
 
 const APIEndpoint = new NovelCovid()
 
-const Country = () => {
+const Country = ({ selectedCountry }) => {
   const [current, setCurrent] = useState({})
   const [isLoadingC, setIsLoadingC] = useState(true)
   const [errorC, setErrorC] = useState(false)
@@ -21,7 +21,7 @@ const Country = () => {
 
   const fetchCurrent = async () => {
     setIsLoadingC(true)
-    await APIEndpoint.countries('norway')
+    await APIEndpoint.countries(selectedCountry)
       .then((response) => {
         if (response) {
           return response
@@ -36,7 +36,7 @@ const Country = () => {
 
   const fetchYesterday = async () => {
     setIsLoadingY(true)
-    await APIEndpoint.countries('norway', { yesterday: true })
+    await APIEndpoint.countries(selectedCountry, { yesterday: true })
       .then((response) => {
         if (response) {
           return response
@@ -51,7 +51,7 @@ const Country = () => {
 
   const fetchHistorical = async () => {
     setIsLoadingH(true)
-    await APIEndpoint.historical(null, 'norway')
+    await APIEndpoint.historical(null, selectedCountry)
       .then((response) => {
         if (response) {
           return response
@@ -90,8 +90,7 @@ const Country = () => {
     !isLoadingH &&
     !errorH ? (
     <>
-      <h2>{current.country}</h2>
-      <CountrySummary tlCasesValue={tlCasesValue} />
+      <CountrySummary tlCasesValue={tlCasesValue} country={current.country} />
       <CountryStats c={current} y={yesterday} />
       <CountryChart tlCasesValue={tlCasesValue} tlCasesKeys={tlCasesKeys} />
     </>
