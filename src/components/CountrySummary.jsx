@@ -11,27 +11,30 @@ function tenDayDiff(casesValue, lastDay) {
   } else if (diff < 0) {
     return formatNum(-diff) + ' fewer than previous ten days'
   }
-  return 'Same increase as the previous ten days'
+  return 'Same as the previous ten days'
 }
 
 const CountrySummary = ({ tlCasesValue, country }) => {
   return (
     <section className="country">
-      <p className="thirtyday">
-        {formatNum(tlCasesValue[29] - tlCasesValue[0])} new cases in {country}{' '}
-        in the last 30 days
-      </p>
+      <h2>Last 30 days</h2>
+      <h3>
+        {formatNum(tlCasesValue[29] - tlCasesValue[0])} new cases in {country}
+      </h3>
       <ul className="tenday">
         <li>
-          {formatNum(tlCasesValue[29] - tlCasesValue[20])} new cases day 21–30 (
-          {tenDayDiff(tlCasesValue, 29)})
+          <span>{formatNum(tlCasesValue[9] - tlCasesValue[0])}</span> new cases
+          day 1–10
         </li>
         <li>
-          {formatNum(tlCasesValue[19] - tlCasesValue[10])} new cases day 11–20 (
-          {tenDayDiff(tlCasesValue, 19)})
+          <span>{formatNum(tlCasesValue[19] - tlCasesValue[10])}</span> new
+          cases day 11–20 <br />
+          {tenDayDiff(tlCasesValue, 19)}
         </li>
         <li>
-          {formatNum(tlCasesValue[9] - tlCasesValue[0])} new cases day 1–10
+          <span>{formatNum(tlCasesValue[29] - tlCasesValue[20])}</span> new
+          cases day 21–30 <br />
+          {tenDayDiff(tlCasesValue, 29)}
         </li>
       </ul>
     </section>

@@ -17,6 +17,7 @@ function formatDate(epochDate, yesterday) {
 const CountryStats = ({ c, y }) => {
   return (
     <section className="country">
+      <h2>Last two days</h2>
       <table className="table-view">
         <thead>
           <tr>

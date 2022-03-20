@@ -191,7 +191,8 @@ const App = () => {
       <main>
         {show.country ? (
           <div className="country-select">
-            <select value={selectedCountry} onChange={changeCountry}>
+            <label htmlFor="country">Select country</label>
+            <select id="country" name="country" value={selectedCountry} onChange={changeCountry}>
               {sortedCountries.map((country, i) => (
                 <option key={i} value={country}>
                   {country}

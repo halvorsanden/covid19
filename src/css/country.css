@@ -1,15 +1,6 @@
 .country-select {
   flex: 1 0 100%;
-  margin-bottom: 1rem;
-}
-
-.country-select select {
-  padding: 0.4em;
-  font-size: 1rem;
-  border-radius: 0;
-  border: 1px solid var(--border);
-  background-color: var(--selectback);
-  color: var(--text)
+  margin-bottom: 4vmin;
 }
 
 .country {
@@ -18,21 +9,22 @@
   margin-bottom: 1rem;
 }
 
-.thirtyday {
-  margin-top: 1rem;
-  font-weight: 600;
-}
-
 .tenday {
   margin-bottom: 1rem;
   list-style: none;
   font-size: 90%;
   color: var(--htext);
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+}
+
+.tenday li span {
+  font-weight: 700;
 }
 
 table {
-  margin-top: 2vh;
-  margin-bottom: 4vh;
+  margin-bottom: 4vmin;
   border-collapse: collapse;
 }
 

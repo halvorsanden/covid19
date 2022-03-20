@@ -98,6 +98,21 @@ button:hover {
   border-color: var(--btnhoverborder);
 }
 
+label {
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-bottom: 0.25em;
+}
+
+select {
+  padding: 0.4em;
+  font-size: 1rem;
+  border-radius: 0;
+  border: 1px solid var(--border);
+  background-color: var(--selectback);
+  color: var(--text)
+}
+
 .updated {
   font-size: 0.8rem;
 }
