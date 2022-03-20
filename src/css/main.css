@@ -122,7 +122,7 @@ select {
 }
 
 main {
-  margin: 2rem 4vw 2rem 4vw;
+  margin: 2rem 4vw;
   display: flex;
   flex-flow: row wrap;
 }
@@ -145,7 +145,7 @@ footer {
 
 footer a,
 footer a:visited {
-  color: hsl(209, 100%, 50%);
+  color: hsl(209 100% 50%);
 }
 
 footer a:hover,
@@ -155,8 +155,8 @@ footer a:focus {
 
 .devlogo:link,
 .devlogo:visited {
-  color: hsl(0, 0%, 40%);
-  fill: currentColor;
+  color: hsl(0 0% 40%);
+  fill: currentcolor;
   width: 1.4rem;
 }
 
@@ -198,11 +198,11 @@ footer a:focus {
 }
 
 .darkmode .modescreen {
-  background-color: hsl(0, 0%, 10%);
-  border-color: hsl(0, 0%, 95%);
+  background-color: hsl(0 0% 10%);
+  border-color: hsl(0 0% 95%);
 }
 
 .lightmode .modescreen {
-  background-color: hsl(0, 0%, 95%);
-  border-color: hsl(0, 0%, 10%);
+  background-color: hsl(0 0% 95%);
+  border-color: hsl(0 0% 10%);
 }

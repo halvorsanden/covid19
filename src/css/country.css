@@ -30,11 +30,11 @@ table {
 
 tr {
   text-align: right;
-  border-bottom: 1px solid hsla(0, 0%, 50%, 0.2);
+  border-bottom: 1px solid hsl(0 0% 50% / 0.2);
 }
 
 thead tr {
-  border-bottom: 1px solid hsla(0, 0%, 50%, 0.7);
+  border-bottom: 1px solid hsl(0 0% 50% / 0.7);
 }
 
 th {
@@ -75,7 +75,7 @@ td {
 .dl-view dt,
 .dl-view dd {
   flex: 1 1 50%;
-  border-bottom: 1px solid hsla(0, 0%, 50%, 0.3);
+  border-bottom: 1px solid hsl(0 0% 50% / 0.3);
   padding-top: 0.2em;
   padding-bottom: 0.1em;
 }
@@ -92,7 +92,7 @@ td {
 
 .country-chart {
   display: grid;
-  grid-template-areas: 'values';
+  grid-template-areas: "values";
   margin-bottom: 4vh;
   margin-top: 1rem;
   max-width: 88rem;
@@ -108,11 +108,11 @@ td {
   min-height: 26rem;
   font-size: 0.83rem;
   font-weight: 600;
-  color: hsla(0, 0%, 45%, 0.9);
+  color: hsl(0 0% 45% / 0.9);
 }
 
 .chart-line-lin {
-  border-top: 1px solid hsla(3, 93%, 60%, 0.4);
+  border-top: 1px solid hsl(3 93% 60% / 0.4);
 }
 
 .barwrapper {
