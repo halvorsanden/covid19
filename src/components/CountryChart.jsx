@@ -63,8 +63,10 @@ const CountryChart = ({ tlCasesValue, tlCasesKeys }) => {
     maxY = Math.ceil(max / 1000000) * 1000000
   } else if (max > 1000000) {
     maxY = Math.ceil(max / 100000) * 100000
-  } else {
+  } else if (max > 100000) {
     maxY = Math.ceil(max / 10000) * 10000
+  } else {
+    maxY = Math.ceil(max / 1000) * 1000
   }
   const stepFactor = 100 / maxY
 
