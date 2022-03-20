@@ -73,7 +73,7 @@ const Country = ({ selectedCountry }) => {
   let tlCasesValue = []
   let tlCasesKeys = []
 
-  if (!isLoadingH && !errorH) {
+  if (!isLoadingH && !errorH && historical.timeline) {
     const timeline = historical.timeline
     Object.keys(timeline.cases).forEach(
       (key) => timeline.cases[key] > 0 && tlCasesValue.push(timeline.cases[key])
@@ -90,9 +90,16 @@ const Country = ({ selectedCountry }) => {
     !isLoadingH &&
     !errorH ? (
     <>
-      <CountrySummary tlCasesValue={tlCasesValue} country={current.country} />
       <CountryStats c={current} y={yesterday} />
-      <CountryChart tlCasesValue={tlCasesValue} tlCasesKeys={tlCasesKeys} />
+      {tlCasesValue.length > 0 ? (
+        <>
+          <CountrySummary
+            tlCasesValue={tlCasesValue}
+            country={current.country}
+          />
+          <CountryChart tlCasesValue={tlCasesValue} tlCasesKeys={tlCasesKeys} />
+        </>
+      ) : null}
     </>
   ) : (
     <Loading />
