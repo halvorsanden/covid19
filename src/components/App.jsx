@@ -49,6 +49,7 @@ const App = () => {
     country: false
   })
   const [countries, setCountries] = useState([])
+  const [sortedCountries, setSortedCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = useState('Norway')
   const [isLoadingC, setIsLoadingC] = useState(true)
   const [errorC, setErrorC] = useState(false)
@@ -88,6 +89,12 @@ const App = () => {
     }
   }
 
+  function sortCountries(countries) {
+    let countryArr = []
+    countries.map((country) => countryArr.push(country.country))
+    setSortedCountries(countryArr.sort())
+  }
+
   const fetchPeople = async () => {
     setIsLoadingP(true)
     await fetch(endpointPeople)
@@ -123,6 +130,7 @@ const App = () => {
     await APIEndpoint.countries(null, { sort: 'cases' })
       .then((response) => {
         if (response) {
+          sortCountries(response)
           return response
         } else {
           throw new Error('Error')
@@ -184,9 +192,9 @@ const App = () => {
         {show.country ? (
           <div className="country-select">
             <select value={selectedCountry} onChange={changeCountry}>
-              {countries.map((country, i) => (
-                <option key={i} value={country.country}>
-                  {country.country}
+              {sortedCountries.map((country, i) => (
+                <option key={i} value={country}>
+                  {country}
                 </option>
               ))}
             </select>
