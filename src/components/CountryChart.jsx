@@ -57,7 +57,15 @@ const LinLines = ({ maxY }) => {
 }
 
 const CountryChart = ({ tlCasesValue, tlCasesKeys }) => {
-  const maxY = Math.ceil(tlCasesValue[0] / 1000000) * 1000000
+  const max = tlCasesValue[tlCasesValue.length - 1]
+  let maxY
+  if (max > 10000000) {
+    maxY = Math.ceil(max / 1000000) * 1000000
+  } else if (max > 1000000) {
+    maxY = Math.ceil(max / 100000) * 100000
+  } else {
+    maxY = Math.ceil(max / 10000) * 10000
+  }
   const stepFactor = 100 / maxY
 
   return (
