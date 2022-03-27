@@ -1,6 +1,6 @@
 .country-select {
   flex: 1 0 100%;
-  margin-bottom: 4vmin;
+  margin-bottom: 6vmin;
 }
 
 .country {
@@ -19,12 +19,16 @@
   gap: 1rem;
 }
 
+.tenday li {
+  flex: 0 0 16rem;
+}
+
 .tenday li span {
   font-weight: 700;
 }
 
 table {
-  margin-bottom: 4vmin;
+  margin-bottom: 6vmin;
   border-collapse: collapse;
 }
 
@@ -58,13 +62,13 @@ td {
   flex-flow: row-reverse wrap;
   justify-content: flex-end;
   margin-top: 1rem;
-  column-gap: 5vw;
+  gap: 6vmin;
+  margin-bottom: 6vmin;
 }
 
 .dl-view div {
   max-width: 14rem;
   flex: 1 1 10rem;
-  margin-bottom: 2rem;
 }
 
 .dl-view dl {
